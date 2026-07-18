@@ -37,13 +37,13 @@ export function PortfolioSnapshot({ balance }: PortfolioSnapshotProps) {
 
         <div className="flex gap-3 mt-2 sm:mt-0">
           <Link
-            href="/portfolio"
+            href="/dashboard/portfolio"
             className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-border text-sm font-medium hover:bg-surface-2 transition-colors text-center"
           >
             View Details
           </Link>
           <Link
-            href="/trade"
+            href="/dashboard/trading"
             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary-light transition-colors"
           >
             Trade

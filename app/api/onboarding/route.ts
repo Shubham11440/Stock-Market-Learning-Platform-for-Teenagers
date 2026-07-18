@@ -14,7 +14,7 @@ import { log } from '@/lib/auth-utils'
 
 const schema = z.object({
   goalType: z.enum(['SAVE', 'INVEST', 'TRADE', 'LEARN']).optional(),
-  avatar: z.string().max(32).optional(),
+  image: z.string().max(32).optional(),
   streakGoal: z.number().int().min(5).max(60).optional(),
 })
 
@@ -38,7 +38,7 @@ export async function PATCH(req: NextRequest) {
 
     const updates: Record<string, unknown> = {}
     if (parsed.data.goalType !== undefined) updates.goalType = parsed.data.goalType
-    if (parsed.data.avatar !== undefined) updates.avatar = parsed.data.avatar
+    if (parsed.data.image !== undefined) updates.image = parsed.data.image
     // streakGoal is not in the Prisma schema yet — stored via a note here.
     // If you add a streakGoal field to the User model, uncomment:
     // if (parsed.data.streakGoal !== undefined) updates.streakGoal = parsed.data.streakGoal

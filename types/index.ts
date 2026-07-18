@@ -12,7 +12,7 @@ export interface User {
   id: string
   email: string
   name: string
-  avatar?: string | null
+  image?: string | null
   age?: number | null
   xp: number
   level: number
@@ -158,7 +158,7 @@ export interface LeaderboardEntry {
   rank: number
   userId: string
   name: string
-  avatar?: string | null
+  image?: string | null
   xp: number
   level: number
   streak: number
@@ -181,7 +181,7 @@ export interface SquadMember {
   userId: string
   squadId: string
   role: 'LEADER' | 'MEMBER'
-  user: Pick<User, 'id' | 'name' | 'avatar' | 'xp' | 'level'>
+  user: Pick<User, 'id' | 'name' | 'image' | 'xp' | 'level'>
 }
 
 export interface Duel {

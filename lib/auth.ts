@@ -65,7 +65,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
               name: email.split('@')[0] ?? 'User',
               lastLoginDate: new Date(),
             },
-            select: { id: true, email: true, name: true, avatar: true, goalType: true },
+            select: { id: true, email: true, name: true, image: true, goalType: true },
           })
 
           clearVerifyRateLimit(email)

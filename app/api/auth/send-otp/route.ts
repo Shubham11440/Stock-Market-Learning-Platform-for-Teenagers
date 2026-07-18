@@ -19,7 +19,7 @@ import {
   maskEmail,
 } from '@/lib/auth-utils'
 
-const FROM = process.env.RESEND_FROM_EMAIL ?? 'onboarding@stockup.in'
+const FROM = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev'
 
 const schema = z.object({
   email: z.string().email(),
@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       }
     } else {
       const resend = new Resend(process.env.RESEND_API_KEY)
-      await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from: FROM,
         to: normalizedEmail,
         subject: 'Your StockUp login code',
@@ -81,6 +81,11 @@ export async function POST(req: NextRequest) {
           </div>
         `,
       })
+
+      if (error) {
+        log.error({ event: 'otp.send.failed', error: error.message || 'Unknown Resend error' })
+        return NextResponse.json({ error: 'EMAIL_FAILED', details: error }, { status: 500 })
+      }
     }
 
     log.info({ event: 'otp.sent', email: maskEmail(normalizedEmail) })

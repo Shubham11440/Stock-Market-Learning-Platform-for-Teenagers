@@ -22,7 +22,7 @@ export function DailyChallenge() {
         </p>
 
         <Link
-          href="/arena"
+          href="/dashboard/arena"
           className="inline-flex items-center gap-2 bg-white text-primary px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/90 transition-colors"
         >
           Enter the Arena

@@ -27,7 +27,7 @@ export default async function LessonPage({
       {/* Top Bar for Lesson */}
       <header className="flex items-center justify-between mb-8">
         <Link 
-          href={`/learn/${levelId}`}
+          href={`/dashboard/learn/${levelId}`}
           className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-2 text-text-3 hover:text-text-1 transition-colors"
           aria-label="Exit lesson"
         >

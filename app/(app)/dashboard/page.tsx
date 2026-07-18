@@ -23,7 +23,7 @@ export default async function DashboardPage() {
     where: { id: session.user.id },
     select: {
       name: true,
-      avatar: true,
+      image: true,
       xp: true,
       level: true,
       streak: true,
@@ -69,7 +69,7 @@ export default async function DashboardPage() {
           <section aria-label="Level Progress">
             <LevelProgressCard 
               name={user.name} 
-              avatar={user.avatar} 
+              avatar={user.image} 
               currentXp={user.xp} 
               level={user.level} 
             />

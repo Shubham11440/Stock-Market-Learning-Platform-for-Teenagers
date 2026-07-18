@@ -26,7 +26,7 @@ export default function OnboardingPage() {
   
   const [step, setStep] = useState(1)
   const [goalType, setGoalType] = useState<string | null>(null)
-  const [avatar, setAvatar] = useState<string>('avatar_1')
+  const [image, setImage] = useState<string>('avatar_1')
   const [streakGoal, setStreakGoal] = useState<number | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isDone, setIsDone] = useState(false)
@@ -54,7 +54,7 @@ export default function OnboardingPage() {
       const res = await fetch('/api/onboarding', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goalType, avatar, streakGoal }),
+        body: JSON.stringify({ goalType, image, streakGoal }),
       })
 
       if (!res.ok) throw new Error('Failed to save onboarding data')
@@ -185,7 +185,7 @@ export default function OnboardingPage() {
               <h2 className="text-3xl font-display font-semibold mb-2">Pick your avatar</h2>
               <p className="text-text-2 text-sm mb-8">Choose how you want to appear on the leaderboard.</p>
               
-              <AvatarSelector selected={avatar} onSelect={setAvatar} />
+              <AvatarSelector selected={image} onSelect={setImage} />
             </motion.div>
           )}
 

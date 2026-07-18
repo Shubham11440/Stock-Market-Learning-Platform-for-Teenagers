@@ -38,7 +38,7 @@ export function NewsHighlight() {
           <Newspaper size={18} className="text-primary" />
           <h3 className="font-display font-semibold text-text-1">Market Buzz</h3>
         </div>
-        <Link href="/news" className="text-sm font-medium text-primary hover:text-primary-light transition-colors flex items-center gap-1">
+        <Link href="/dashboard/news" className="text-sm font-medium text-primary hover:text-primary-light transition-colors flex items-center gap-1">
           All news <ArrowRight size={14} />
         </Link>
       </div>
@@ -47,7 +47,7 @@ export function NewsHighlight() {
         {mockNews.map((news) => (
           <Link 
             key={news.id} 
-            href="/news" // In reality, this might open a modal or external link
+            href="/dashboard/news" // In reality, this might open a modal or external link
             className="group flex flex-col gap-1 border-l-2 border-border pl-3 hover:border-primary transition-colors"
           >
             <h4 className="text-sm font-medium text-text-1 group-hover:text-primary-light transition-colors line-clamp-2 leading-snug">

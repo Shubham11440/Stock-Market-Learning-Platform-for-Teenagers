@@ -33,7 +33,7 @@ export function TradeUIWrapper({ quote, historicalData, userBalance, positionQua
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Back link */}
-      <Link href="/trade" className="inline-flex items-center gap-2 text-text-3 hover:text-text-1 transition-colors mb-6 text-sm font-medium">
+      <Link href="/dashboard/trading" className="inline-flex items-center gap-2 text-text-3 hover:text-text-1 transition-colors mb-6 text-sm font-medium">
         <ArrowLeft size={16} /> Back to Search
       </Link>
 

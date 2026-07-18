@@ -21,7 +21,7 @@ export default async function LevelPage({ params }: { params: { levelId: string 
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <Link href="/learn" className="inline-flex items-center gap-2 text-text-3 hover:text-text-1 mb-8 transition-colors">
+      <Link href="/dashboard/learn" className="inline-flex items-center gap-2 text-text-3 hover:text-text-1 mb-8 transition-colors">
         <ArrowLeft size={16} /> Back to Map
       </Link>
 
@@ -32,7 +32,7 @@ export default async function LevelPage({ params }: { params: { levelId: string 
         {lessons.map((lesson, idx) => (
           <Link
             key={lesson.id}
-            href={lesson.isUnlocked ? `/learn/${levelId}/lesson/${lesson.id}` : '#'}
+            href={lesson.isUnlocked ? `/dashboard/learn/${levelId}/lesson/${lesson.id}` : '#'}
             className={`flex items-center justify-between p-6 rounded-2xl border ${
               lesson.isUnlocked 
                 ? 'bg-surface hover:bg-surface-2 border-border cursor-pointer group transition-colors'

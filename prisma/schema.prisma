@@ -55,7 +55,7 @@ model User {
   id             String    @id @default(cuid())
   email          String    @unique
   name           String
-  avatar         String?
+  image          String?
   age            Int?
   xp             Int       @default(0)
   level          Int       @default(1)

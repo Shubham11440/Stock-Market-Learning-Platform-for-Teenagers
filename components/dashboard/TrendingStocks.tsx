@@ -25,7 +25,7 @@ export function TrendingStocks() {
           <TrendingUp size={18} className="text-primary" />
           <h3 className="font-display font-semibold text-text-1">Trending</h3>
         </div>
-        <Link href="/trade" className="text-sm font-medium text-primary hover:text-primary-light transition-colors flex items-center gap-1">
+        <Link href="/dashboard/trading" className="text-sm font-medium text-primary hover:text-primary-light transition-colors flex items-center gap-1">
           Explore <ArrowRight size={14} />
         </Link>
       </div>
@@ -36,7 +36,7 @@ export function TrendingStocks() {
           return (
             <Link 
               key={stock.symbol} 
-              href={`/trade/${stock.symbol}`}
+              href={`/dashboard/trading/${stock.symbol}`}
               className="flex items-center justify-between p-3 rounded-xl hover:bg-surface transition-colors border border-transparent hover:border-border/50 group"
             >
               <div className="flex flex-col">

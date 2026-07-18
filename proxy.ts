@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────
-// proxy.ts — Edge-compatible route protection (Middleware)
+// middleware.ts — Edge-compatible route protection (Middleware)
 // Reads auth state from the JWT cookie — zero DB calls.
 // ─────────────────────────────────────────────────────────────────────
 
@@ -43,17 +43,7 @@ export default auth(async (req: any) => {
   }
 
   // ── Dashboard routes — must be authenticated + onboarded ────────
-  if (
-    pathname.startsWith('/dashboard') ||
-    pathname.startsWith('/learn') ||
-    pathname.startsWith('/trade') ||
-    pathname.startsWith('/portfolio') ||
-    pathname.startsWith('/leaderboard') ||
-    pathname.startsWith('/arena') ||
-    pathname.startsWith('/news') ||
-    pathname.startsWith('/social') ||
-    pathname.startsWith('/profile')
-  ) {
+  if (pathname.startsWith('/dashboard')) {
     if (!isAuthenticated) {
       const loginUrl = new URL('/login', req.url)
       loginUrl.searchParams.set('callbackUrl', pathname)

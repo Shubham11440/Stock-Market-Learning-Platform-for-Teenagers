@@ -30,45 +30,45 @@ const navItems = [
     description: 'Your overview',
   },
   {
-    href: '/learn',
+    href: '/dashboard/learn',
     label: 'Learn',
     icon: GraduationCap,
     description: 'Quest map',
     badge: '🔥',
   },
   {
-    href: '/trade',
+    href: '/dashboard/trading',
     label: 'Trade',
     icon: TrendingUp,
     description: 'Virtual trading',
   },
   {
-    href: '/portfolio',
+    href: '/dashboard/portfolio',
     label: 'Portfolio',
     icon: PieChart,
     description: 'Your holdings',
   },
   {
-    href: '/leaderboard',
+    href: '/dashboard/leaderboard',
     label: 'Leaderboard',
     icon: Trophy,
     description: 'Global rankings',
   },
   {
-    href: '/arena',
+    href: '/dashboard/arena',
     label: 'Arena',
     icon: Zap,
     description: 'Daily challenge',
     badge: '⚡',
   },
   {
-    href: '/news',
+    href: '/dashboard/news',
     label: 'News',
     icon: Newspaper,
     description: 'Market buzz',
   },
   {
-    href: '/social',
+    href: '/dashboard/social',
     label: 'Clubs',
     icon: Users,
     description: 'Squads & duels',
@@ -76,7 +76,7 @@ const navItems = [
 ] as const
 
 const bottomItems = [
-  { href: '/profile', label: 'Profile', icon: User, description: 'Your stats' },
+  { href: '/dashboard/settings', label: 'Settings', icon: User, description: 'Your stats' },
 ] as const
 
 // ── Sidebar Component ──────────────────────────────────────────────────

@@ -44,7 +44,7 @@ export function QuestMap({ levels }: QuestMapProps) {
             
             {/* The Level Node */}
             <Link 
-              href={level.isUnlocked ? `/learn/${level.id}` : '#'}
+              href={level.isUnlocked ? `/dashboard/learn/${level.id}` : '#'}
               className={cn(
                 'group relative flex items-center justify-center w-20 h-20 rounded-full border-4 shadow-xl transition-all duration-300',
                 level.isCompleted ? 'bg-primary border-primary-light text-white hover:scale-105' :
