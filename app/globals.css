@@ -24,6 +24,7 @@
   --color-profit: rgb(var(--profit));
   --color-loss:   rgb(var(--loss));
   --color-gold:   rgb(var(--gold));
+  --color-teal:   rgb(var(--teal));
 
   --color-text-1: rgb(var(--text-1));
   --color-text-2: rgb(var(--text-2));
@@ -64,6 +65,8 @@
   --text-2: 71 85 105;      /* #475569 */
   --text-3: 148 163 184;    /* #94A3B8 */
 
+  --teal: 13 148 136;        /* #0D9488 */
+
   --glow-primary: 124 58 237;
   --glow-profit:  5 150 105;
 }
@@ -87,6 +90,8 @@
   --text-1: 248 248 255;   /* #F8F8FF */
   --text-2: 156 163 175;   /* #9CA3AF */
   --text-3: 75 85 99;      /* #4B5563 */
+
+  --teal: 20 184 166;      /* #14B8A6 */
 }
 
 /* ── Keyframe animations ─────────────────────────────────────────────── */
@@ -221,6 +226,20 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Editorial teal italic emphasis (reference design pattern) */
+.text-editorial {
+  color: rgb(var(--teal));
+  font-style: italic;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, rgb(var(--teal)), #34D399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
 }
 
 .gradient-text-profit {
