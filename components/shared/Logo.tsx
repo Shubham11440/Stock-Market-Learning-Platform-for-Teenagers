@@ -10,9 +10,9 @@ interface LogoProps {
 }
 
 const sizes = {
-  sm: { icon: 'w-7 h-7 text-sm', text: 'text-lg', dot: 'w-1.5 h-1.5' },
-  md: { icon: 'w-9 h-9 text-base', text: 'text-xl', dot: 'w-2 h-2' },
-  lg: { icon: 'w-12 h-12 text-xl', text: 'text-3xl', dot: 'w-2.5 h-2.5' },
+  sm: { icon: 'w-6 h-6', text: 'text-lg' },
+  md: { icon: 'w-8 h-8', text: 'text-xl' },
+  lg: { icon: 'w-10 h-10', text: 'text-2xl' },
 }
 
 export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
@@ -24,40 +24,41 @@ export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
       className={cn('flex items-center gap-2.5 select-none group', className)}
       aria-label="StockUp home"
     >
-      {/* Icon mark */}
+      {/* 
+        Custom minimal geometric mark: 
+        Two interlocking/ascending shapes representing progress and connection.
+        Avoids generic arrows or charts.
+      */}
       <div
         className={cn(
           s.icon,
-          'relative flex items-center justify-center rounded-xl',
-          'bg-gradient-to-br from-primary to-primary-light',
-          'shadow-lg shadow-primary/30 group-hover:shadow-primary/50',
-          'transition-shadow duration-300',
-          'flex-shrink-0'
+          'relative flex items-center justify-center flex-shrink-0'
         )}
       >
-        {/* Up arrow / stock chart icon */}
         <svg
-          viewBox="0 0 24 24"
+          viewBox="0 0 32 32"
           fill="none"
-          stroke="white"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-[60%] h-[60%]"
-          aria-hidden
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full text-text-1"
         >
-          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-          <polyline points="16 7 22 7 22 13" />
+          {/* Back shape - slightly faded */}
+          <path
+            d="M6 22V14C6 9.58172 9.58172 6 14 6H16C20.4183 6 24 9.58172 24 14V22"
+            stroke="currentColor"
+            strokeOpacity="0.4"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+          />
+          {/* Front shape - solid, crossing over */}
+          <path
+            d="M8 10V18C8 22.4183 11.5817 26 16 26H18C22.4183 26 26 22.4183 26 18V10"
+            stroke="currentColor"
+            strokeWidth="3.5"
+            strokeLinecap="round"
+          />
+          {/* Connection accent dot */}
+          <circle cx="16" cy="16" r="3" fill="rgb(var(--primary))" />
         </svg>
-
-        {/* Live pulse dot */}
-        <span
-          className={cn(
-            s.dot,
-            'absolute -top-0.5 -right-0.5 rounded-full bg-profit',
-            'ring-2 ring-bg'
-          )}
-        />
       </div>
 
       {/* Wordmark */}
@@ -65,7 +66,7 @@ export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
         <span
           className={cn(
             s.text,
-            'font-display font-bold gradient-text leading-none tracking-tight'
+            'font-sans font-semibold tracking-tight text-text-1'
           )}
         >
           StockUp
