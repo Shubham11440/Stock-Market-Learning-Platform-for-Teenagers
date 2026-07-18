@@ -1,0 +1,48 @@
+{
+  "id": "lesson-1",
+  "title": "What is a Stock?",
+  "description": "Learn the basics of what a stock actually is.",
+  "xpReward": 50,
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "A Slice of the Pie",
+      "content": "When you buy a stock, you're literally buying a small piece of a real company. You become a part-owner!"
+    },
+    {
+      "id": "slide-2",
+      "title": "Why do companies sell stocks?",
+      "content": "Companies sell shares to raise money to grow their business, build factories, or hire more people."
+    },
+    {
+      "id": "slide-3",
+      "title": "How do you make money?",
+      "content": "You make money if the company grows and becomes more valuable (the stock price goes up), or if they pay you a portion of their profits (called dividends)."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What are you actually buying when you purchase a stock?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "A loan to the company",
+          "isCorrect": false,
+          "explanation": "That would be a bond, not a stock."
+        },
+        {
+          "id": "opt2",
+          "text": "Partial ownership of the company",
+          "isCorrect": true,
+          "explanation": "Correct! A stock represents an ownership stake."
+        },
+        {
+          "id": "opt3",
+          "text": "A product from the company",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
