@@ -19,9 +19,19 @@ export interface User {
   streak: number
   lastLoginDate?: Date | null
   virtualBalance: number
-  isRealUnlocked: boolean
-  theme: Theme
+  
+  unlockStatus: 'LOCKED' | 'AGE_VERIFIED' | 'PARENT_CONSENT_PENDING' | 'KYC_PENDING' | 'BROKER_PENDING' | 'UNLOCKED'
+  unlockCompletedAt?: Date | null
+  verifiedAge?: number | null
+  brokerProvider?: string | null
+  parentConsentStatus?: 'PENDING' | 'APPROVED' | 'REJECTED' | null
+
+  theme: Theme | 'system'
   goalType?: GoalType | null
+  publicProfile: boolean
+  showPortfolio: boolean
+  showSquad: boolean
+  featuredBadgeId?: string | null
   createdAt: Date
   updatedAt: Date
 }

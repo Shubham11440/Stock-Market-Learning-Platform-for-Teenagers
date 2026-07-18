@@ -61,11 +61,24 @@ model User {
   level          Int       @default(1)
   streak         Int       @default(0)
   lastLoginDate  DateTime?
-  virtualBalance Float     @default(100000)
-  isRealUnlocked Boolean   @default(false)
-  theme          String    @default("dark")
-  goalType       String? // "SAVE" | "INVEST" | "TRADE" | "LEARN"
-  emailVerified  DateTime?
+  virtualBalance      Float     @default(100000)
+  
+  // Unlock State Machine
+  unlockStatus        String    @default("LOCKED") // "LOCKED" | "AGE_VERIFIED" | "PARENT_CONSENT_PENDING" | "KYC_PENDING" | "BROKER_PENDING" | "UNLOCKED"
+  unlockCompletedAt   DateTime?
+  verifiedAge         Int?
+  brokerProvider      String?
+  parentConsentStatus String?   // "PENDING" | "APPROVED" | "REJECTED"
+  
+  // Settings & Profile
+  theme               String    @default("system")
+  goalType            String?   // "SAVE" | "INVEST" | "TRADE" | "LEARN"
+  publicProfile       Boolean   @default(true)
+  showPortfolio       Boolean   @default(true)
+  showSquad           Boolean   @default(true)
+  featuredBadgeId     String?
+  
+  emailVerified       DateTime?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
