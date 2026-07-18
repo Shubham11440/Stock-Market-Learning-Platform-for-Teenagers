@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Trophy, Copy, CheckCircle2, User, LogOut } from 'lucide-react'
+import Image from 'next/image'
 import { leaveSquadAction } from '@/actions/squads'
 import toast from 'react-hot-toast'
 
@@ -128,7 +129,7 @@ export function SquadHub({ squad, currentUserId }: SquadHubProps) {
                     {emoji ? (
                       <span className="text-xl">{emoji}</span>
                     ) : member.user.image ? (
-                      <img src={member.user.image} alt={member.user.name} className="w-full h-full object-cover" />
+                      <Image src={member.user.image} alt={member.user.name} width={40} height={40} className="w-full h-full object-cover" />
                     ) : (
                       <User size={20} className="text-text-3" />
                     )}

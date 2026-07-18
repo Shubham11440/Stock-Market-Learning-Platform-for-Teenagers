@@ -1,42 +1,21 @@
-// ─────────────────────────────────────────────────────────────────────
-// lib/env.ts — Validated environment variables
-// Throws at startup if a required variable is missing.
-// Import this in any server file that needs env access.
-// ─────────────────────────────────────────────────────────────────────
+import { z } from 'zod'
+import { logger } from './monitoring/logger'
 
-function required(key: string): string {
-  const value = process.env[key]
-  if (!value) {
-    throw new Error(
-      `Missing required environment variable: ${key}\n` +
-        `Copy .env.example to .env.local and fill in all values.`
-    )
-  }
-  return value
+const envSchema = z.object({
+  DATABASE_URL: z.string().url("Must be a valid URL"),
+  NEXTAUTH_SECRET: z.string().min(1, "NEXTAUTH_SECRET is required"),
+  GOOGLE_CLIENT_ID: z.string().min(1, "GOOGLE_CLIENT_ID is required"),
+  GOOGLE_CLIENT_SECRET: z.string().min(1, "GOOGLE_CLIENT_SECRET is required"),
+  RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required").optional(),
+  GEMINI_API_KEY: z.string().min(1, "GEMINI_API_KEY is required").optional(),
+  NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+})
+
+const parsed = envSchema.safeParse(process.env)
+
+if (!parsed.success) {
+  logger.error("❌ Invalid environment variables:", { errors: parsed.error.flatten().fieldErrors })
+  throw new Error("Invalid environment variables. Check the logs for details.")
 }
 
-function optional(key: string, fallback = ''): string {
-  return process.env[key] ?? fallback
-}
-
-export const env = {
-  // Auth
-  NEXTAUTH_SECRET: required('NEXTAUTH_SECRET'),
-  NEXTAUTH_URL: optional('NEXTAUTH_URL', 'http://localhost:3000'),
-
-  // Google OAuth
-  GOOGLE_CLIENT_ID: optional('GOOGLE_CLIENT_ID'),
-  GOOGLE_CLIENT_SECRET: optional('GOOGLE_CLIENT_SECRET'),
-
-  // Database
-  DATABASE_URL: optional('DATABASE_URL'),
-
-  // Resend (email)
-  RESEND_API_KEY: optional('RESEND_API_KEY'),
-  RESEND_FROM_EMAIL: optional('RESEND_FROM_EMAIL', 'onboarding@stockup.in'),
-
-  // App
-  NODE_ENV: process.env.NODE_ENV ?? 'development',
-  isDev: process.env.NODE_ENV === 'development',
-  isProd: process.env.NODE_ENV === 'production',
-} as const
+export const env = parsed.data

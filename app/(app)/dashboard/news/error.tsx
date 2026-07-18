@@ -9,5 +9,5 @@ export default function ErrorPage({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  return <RouteError error={error} reset={reset} title="Failed to load learn" />
+  return <RouteError error={error} reset={reset} title="Failed to load news" />
 }

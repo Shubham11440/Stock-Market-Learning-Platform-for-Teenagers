@@ -1,5 +1,6 @@
 import { LeaderboardEntry } from '@/types/gamification';
-import { Trophy, Medal, User } from 'lucide-react';
+import { Trophy, Medal, User, Award } from 'lucide-react';
+import Image from 'next/image';
 
 export function LeaderboardList({ entries }: { entries: LeaderboardEntry[] }) {
   if (!entries || entries.length === 0) {
@@ -54,7 +55,7 @@ export function LeaderboardList({ entries }: { entries: LeaderboardEntry[] }) {
                       return <span className="text-xl">{emoji}</span>
                     }
                     if (entry.avatar) {
-                      return <img src={entry.avatar} alt={entry.name} className="w-full h-full object-cover" />
+                      return <Image src={entry.avatar} alt={entry.name} width={40} height={40} className="w-full h-full object-cover" />
                     }
                     return <User size={20} className="text-text-3" />
                   })()}

@@ -5,6 +5,7 @@
 // in Next.js development (hot module reload creates new instances)
 
 import { PrismaClient } from '@prisma/client'
+import { env } from './env'
 import { Pool } from 'pg'
 import { PrismaPg } from '@prisma/adapter-pg'
 

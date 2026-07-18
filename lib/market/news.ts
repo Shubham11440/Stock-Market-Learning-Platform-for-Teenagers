@@ -13,8 +13,7 @@ export interface NewsArticle {
 
 export async function getMarketNews(query: string = 'Stock Market India'): Promise<NewsArticle[]> {
   try {
-    const yf = (yahooFinance as any).default || yahooFinance
-    const result = await yf.search(query, { newsCount: 15 }) as any
+    const result = await yahooFinance.search(query, { newsCount: 15 }) as any
 
     if (!result || !result.news) {
       return []

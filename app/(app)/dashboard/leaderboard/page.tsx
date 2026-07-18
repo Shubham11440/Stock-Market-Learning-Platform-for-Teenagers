@@ -4,6 +4,8 @@ import { LeaderboardEntry } from '@/types/gamification';
 import { LeaderboardList } from '@/components/gamification/Leaderboard';
 import { Trophy } from 'lucide-react';
 
+export const revalidate = 60; // Cache leaderboard for 1 minute
+
 export default async function LeaderboardPage() {
   const session = await auth();
   const currentUserId = session?.user?.id;
