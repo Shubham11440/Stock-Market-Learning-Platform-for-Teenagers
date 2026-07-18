@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
     // optimizePackageImports: improves tree-shaking for large icon/component libs
     optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion'],
   },
+  serverExternalPackages: ['@prisma/client', 'bcryptjs'],
 }
 
 export default nextConfig

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit, JetBrains_Mono } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from '@/components/shared/ThemeProvider'
+import { SessionProvider } from 'next-auth/react'
 import './globals.css'
 
 // ── Fonts ───────────────────────────────────────────────────────────────
@@ -82,9 +83,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-dvh bg-bg text-text-1 font-sans antialiased">
-        <ThemeProvider>
-          {children}
-          <Toaster
+        <SessionProvider>
+          <ThemeProvider>
+            {children}
+            <Toaster
             position="top-right"
             toastOptions={{
               duration: 3500,
@@ -105,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}
           />
         </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   )
