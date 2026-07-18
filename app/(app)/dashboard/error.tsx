@@ -19,7 +19,7 @@ export default function DashboardError({
           Something went wrong
         </h2>
         <p className="text-text-2 text-sm max-w-[300px] mx-auto">
-          We had trouble loading your dashboard data. Please try again.
+          {error.message || "We had trouble loading your dashboard data. Please try again."}
         </p>
       </div>
       <button

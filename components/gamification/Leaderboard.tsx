@@ -42,11 +42,22 @@ export function LeaderboardList({ entries }: { entries: LeaderboardEntry[] }) {
               {/* User Info */}
               <div className="col-span-7 sm:col-span-8 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-surface-2 border border-border flex items-center justify-center overflow-hidden flex-shrink-0">
-                  {entry.avatar ? (
-                    <img src={entry.avatar} alt={entry.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <User size={20} className="text-text-3" />
-                  )}
+                  {(() => {
+                    const avatarsMap: Record<string, string> = {
+                      avatar_1: '🦊', avatar_2: '🐼', avatar_3: '🦁', avatar_4: '🐯',
+                      avatar_5: '🦅', avatar_6: '🦉', avatar_7: '🦄', avatar_8: '🐉',
+                    }
+                    const isEmoji = entry.avatar && entry.avatar.startsWith('avatar_')
+                    const emoji = isEmoji ? avatarsMap[entry.avatar!] : null
+
+                    if (emoji) {
+                      return <span className="text-xl">{emoji}</span>
+                    }
+                    if (entry.avatar) {
+                      return <img src={entry.avatar} alt={entry.name} className="w-full h-full object-cover" />
+                    }
+                    return <User size={20} className="text-text-3" />
+                  })()}
                 </div>
                 <div>
                   <p className={`font-semibold text-sm ${entry.isCurrentUser ? 'text-primary' : 'text-text-1'}`}>

@@ -131,7 +131,11 @@ export function Sidebar() {
           <NavItem
             key={item.href}
             item={item}
-            active={pathname === item.href || pathname.startsWith(item.href + '/')}
+            active={
+              item.href === '/dashboard'
+                ? pathname === '/dashboard'
+                : pathname === item.href || pathname.startsWith(item.href + '/')
+            }
             collapsed={collapsed}
           />
         ))}

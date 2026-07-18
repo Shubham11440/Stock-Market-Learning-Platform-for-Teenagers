@@ -7,7 +7,7 @@ import { Logo } from '@/components/shared/Logo'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { cn } from '@/lib/utils'
 
-export function FloatingNavbar() {
+export function FloatingNavbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
   const [isTop, setIsTop] = useState(true)
@@ -56,18 +56,29 @@ export function FloatingNavbar() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle className="rounded-full bg-transparent border-none hover:bg-surface-2/50" />
-          <Link
-            href="/login"
-            className="hidden sm:block text-sm font-medium text-text-2 hover:text-text-1 transition-colors px-3 py-2"
-          >
-            Log in
-          </Link>
-          <Link
-            href="/signup"
-            className="text-sm font-semibold text-white bg-primary hover:bg-primary-dark px-5 py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-          >
-            Get started
-          </Link>
+          {isLoggedIn ? (
+            <Link
+              href="/dashboard"
+              className="text-sm font-semibold text-white bg-primary hover:bg-primary-dark px-5 py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="hidden sm:block text-sm font-medium text-text-2 hover:text-text-1 transition-colors px-3 py-2"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="text-sm font-semibold text-white bg-primary hover:bg-primary-dark px-5 py-2 rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              >
+                Get started
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </motion.header>

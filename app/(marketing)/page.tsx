@@ -8,15 +8,20 @@ import { CtaSection } from '@/components/landing/CtaSection'
 import { PremiumFooter } from '@/components/landing/PremiumFooter'
 import type { Metadata } from 'next'
 
+import { auth } from '@/lib/auth'
+
 export const metadata: Metadata = {
   title: 'StockUp — Master the market. Play the game.',
   description: 'A premium simulation environment to learn trading, build your virtual portfolio, and compete with friends. Zero risk, real knowledge.',
 }
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const session = await auth()
+  const isLoggedIn = !!session?.user?.id
+
   return (
     <main className="min-h-dvh bg-bg text-text-1 selection:bg-primary/20 selection:text-primary">
-      <FloatingNavbar />
+      <FloatingNavbar isLoggedIn={isLoggedIn} />
       
       {/* Sections built with Framer Motion and premium UI design principles */}
       <HeroSection />

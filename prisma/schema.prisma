@@ -80,6 +80,10 @@ model User {
   watchlist    Watchlist[]
   xpHistory    XPHistory[]
   leaderboardSnapshots LeaderboardSnapshot[]
+
+  // Duels
+  duelsChallenged Duel[] @relation("ChallengerDuels")
+  duelsOpponent   Duel[] @relation("OpponentDuels")
 }
 
 // ── Trading ───────────────────────────────────────────────────
@@ -213,17 +217,18 @@ model DailyQuizSubmission {
 
 model Squad {
   id        String      @id @default(cuid())
-  name      String
+  name      String      @unique
   code      String      @unique // 6-char invite code
   createdAt DateTime    @default(now())
   members   SquadMember[]
 }
 
 model SquadMember {
-  id      String @id @default(cuid())
-  userId  String @unique
-  squadId String
-  role    String @default("MEMBER") // "LEADER" | "MEMBER"
+  id       String   @id @default(cuid())
+  userId   String   @unique
+  squadId  String
+  role     String   @default("MEMBER") // "LEADER" | "MEMBER"
+  joinedAt DateTime @default(now())
 
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
   squad Squad @relation(fields: [squadId], references: [id], onDelete: Cascade)
@@ -232,14 +237,17 @@ model SquadMember {
 model Duel {
   id           String   @id @default(cuid())
   challengerId String
-  challengedId String
-  status       String   @default("PENDING") // "PENDING" | "ACTIVE" | "COMPLETED"
-  stocks       Json // string[] - 3 stock symbols
-  startDate    DateTime @default(now())
-  endDate      DateTime
+  opponentId   String
+  status       String   @default("PENDING") // "PENDING" | "ACCEPTED" | "ACTIVE" | "COMPLETED" | "EXPIRED" | "CANCELLED"
+  picks        Json?    // { challenger: string[], opponent: string[] }
+  startAt      DateTime?
+  endAt        DateTime?
   winnerId     String?
   xpReward     Int      @default(250)
   createdAt    DateTime @default(now())
+
+  challenger User @relation("ChallengerDuels", fields: [challengerId], references: [id], onDelete: Cascade)
+  opponent   User @relation("OpponentDuels", fields: [opponentId], references: [id], onDelete: Cascade)
 }
 
 model XPHistory {

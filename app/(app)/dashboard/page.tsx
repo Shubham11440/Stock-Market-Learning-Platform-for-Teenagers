@@ -8,9 +8,6 @@ import { DailyChallenge } from '@/components/dashboard/DailyChallenge'
 import { TrendingStocks } from '@/components/dashboard/TrendingStocks'
 import { NewsHighlight } from '@/components/dashboard/NewsHighlight'
 
-// Ensure this runs purely on Node, to bypass any Next.js Turbopack Edge inference bugs with Prisma
-export const runtime = 'nodejs'
-
 export default async function DashboardPage() {
   const session = await auth()
   

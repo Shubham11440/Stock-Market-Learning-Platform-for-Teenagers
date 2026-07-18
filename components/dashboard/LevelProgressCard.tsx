@@ -39,12 +39,31 @@ export function LevelProgressCard({ name, avatar, currentXp, level }: LevelProgr
   const progressPercentage = ((currentXp - prevXp) / (nextXp - prevXp)) * 100
   const xpNeeded = nextXp - currentXp
 
+    // Mapping for default emojis
+    const avatarsMap: Record<string, string> = {
+      avatar_1: '🦊',
+      avatar_2: '🐼',
+      avatar_3: '🦁',
+      avatar_4: '🐯',
+      avatar_5: '🦅',
+      avatar_6: '🦉',
+      avatar_7: '🦄',
+      avatar_8: '🐉',
+    }
+
+  const isEmoji = avatar && avatar.startsWith('avatar_')
+  const emoji = isEmoji ? avatarsMap[avatar] : null
+
   return (
     <article className="p-5 rounded-2xl bg-surface-2 border border-border/50 flex flex-col sm:flex-row gap-5 items-center sm:items-start shadow-sm">
       {/* Avatar & Badge */}
       <div className="relative flex-shrink-0">
         <div className="w-20 h-20 rounded-full border-2 border-primary overflow-hidden relative bg-surface">
-          {avatar ? (
+          {emoji ? (
+            <div className="w-full h-full flex items-center justify-center bg-primary/10 text-4xl">
+              {emoji}
+            </div>
+          ) : avatar ? (
             <Image 
               src={avatar} 
               alt={`${name}'s avatar`} 
