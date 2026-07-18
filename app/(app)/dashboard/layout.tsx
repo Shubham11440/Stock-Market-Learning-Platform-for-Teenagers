@@ -1,6 +1,7 @@
 import { Sidebar } from '@/components/shared/Sidebar'
 import { MobileNav } from '@/components/shared/MobileNav'
 import { Topbar } from '@/components/shared/Topbar'
+import { StockBot } from '@/components/ai/StockBot'
 
 // Dashboard layout:
 //  ┌──────────────────────────────────────────────┐
@@ -31,6 +32,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Mobile bottom nav */}
       <MobileNav />
+
+      {/* AI Mentor Floating Widget */}
+      <StockBot />
     </div>
   )
 }

@@ -84,6 +84,9 @@ model User {
   // Duels
   duelsChallenged Duel[] @relation("ChallengerDuels")
   duelsOpponent   Duel[] @relation("OpponentDuels")
+
+  // AI
+  chatSessions ChatSession[]
 }
 
 // ── Trading ───────────────────────────────────────────────────
@@ -269,4 +272,27 @@ model LeaderboardSnapshot {
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ── AI ────────────────────────────────────────────────────────
+
+model ChatSession {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages ChatMessage[]
+}
+
+model ChatMessage {
+  id            String   @id @default(cuid())
+  chatSessionId String
+  role          String   // "user" | "assistant" | "system" | "tool"
+  content       String   @db.Text
+  createdAt     DateTime @default(now())
+  
+  session ChatSession @relation(fields: [chatSessionId], references: [id], onDelete: Cascade)
 }
