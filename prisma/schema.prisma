@@ -78,6 +78,8 @@ model User {
   badges       UserBadge[]
   squad        SquadMember?
   watchlist    Watchlist[]
+  xpHistory    XPHistory[]
+  leaderboardSnapshots LeaderboardSnapshot[]
 }
 
 // ── Trading ───────────────────────────────────────────────────
@@ -238,4 +240,25 @@ model Duel {
   winnerId     String?
   xpReward     Int      @default(250)
   createdAt    DateTime @default(now())
+}
+
+model XPHistory {
+  id        String   @id @default(cuid())
+  userId    String
+  amount    Int
+  reason    String   // "LESSON", "QUIZ", "TRADE", "STREAK", "ARENA", "DUEL"
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LeaderboardSnapshot {
+  id        String   @id @default(cuid())
+  userId    String
+  rank      Int
+  xp        Int
+  period    String   // "WEEKLY", "ALL_TIME"
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
