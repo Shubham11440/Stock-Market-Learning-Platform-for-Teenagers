@@ -82,17 +82,17 @@ export function StockBot() {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Edge Tab */}
       <button
         id="tour-stockbot"
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-40 p-3.5 lg:p-4 rounded-full shadow-premium-lg transition-all transform hover:scale-105 active:scale-95",
-          "bg-gradient-to-r from-primary to-primary-light text-white",
-          isOpen && "scale-0 opacity-0 pointer-events-none"
+          "fixed top-[60%] -translate-y-1/2 right-0 z-40 flex items-center justify-center p-2 pl-3 lg:p-3 lg:pl-4 rounded-l-2xl shadow-premium-lg transition-all duration-300",
+          "bg-gradient-to-b from-primary to-primary-light text-white opacity-70 hover:opacity-100 hover:pr-4 group",
+          isOpen ? "translate-x-full opacity-0 pointer-events-none" : "translate-x-0"
         )}
       >
-        <MessageSquare size={24} />
+        <Bot size={24} className="group-hover:animate-pulse" />
       </button>
 
       {/* Slide-over Chat Panel */}
