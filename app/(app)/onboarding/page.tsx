@@ -135,7 +135,7 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto flex flex-col h-full min-h-[500px]">
+    <div className="w-full max-w-md mx-auto px-4 flex flex-col h-full min-h-[500px]">
       <div className="mb-10 mt-4">
         <OnboardingProgress total={3} current={step} />
       </div>
@@ -151,12 +151,12 @@ export default function OnboardingPage() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.3 }}
-              className="absolute inset-0"
+              className="w-full"
             >
               <h2 className="text-3xl font-display font-semibold mb-2">What's your vibe?</h2>
               <p className="text-text-2 text-sm mb-8">Pick your primary financial goal. You can change this later.</p>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {GOALS.map((goal) => (
                   <GoalCard
                     key={goal.id}
@@ -180,7 +180,7 @@ export default function OnboardingPage() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.3 }}
-              className="absolute inset-0"
+              className="w-full"
             >
               <h2 className="text-3xl font-display font-semibold mb-2">Pick your avatar</h2>
               <p className="text-text-2 text-sm mb-8">Choose how you want to appear on the leaderboard.</p>
@@ -197,7 +197,7 @@ export default function OnboardingPage() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.3 }}
-              className="absolute inset-0"
+              className="w-full"
             >
               <h2 className="text-3xl font-display font-semibold mb-2">How much time?</h2>
               <p className="text-text-2 text-sm mb-8">Set a daily commitment to keep your learning streak alive.</p>
