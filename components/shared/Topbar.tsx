@@ -18,11 +18,16 @@ import {
 interface TopbarProps {
   title?: string
   className?: string
+  user?: {
+    name?: string | null
+    email?: string | null
+    image?: string | null
+  }
 }
 
-export function Topbar({ title, className }: TopbarProps) {
+export function Topbar({ title, className, user: propUser }: TopbarProps) {
   const { data: session } = useSession()
-  const user = session?.user
+  const user = propUser || session?.user
 
   return (
     <header

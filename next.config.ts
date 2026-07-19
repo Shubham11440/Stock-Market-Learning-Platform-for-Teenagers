@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   // Image optimization — allow external domains
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'lh3.googleusercontent.com' }, // Google OAuth avatars
+      { protocol: 'https', hostname: '*.googleusercontent.com' }, // Google OAuth avatars
       { protocol: 'https', hostname: 'res.cloudinary.com' }, // Cloudinary storage
       { protocol: 'https', hostname: 'ui-avatars.com' }, // Fallback avatars
     ],
@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' blob: data: lh3.googleusercontent.com res.cloudinary.com ui-avatars.com; connect-src 'self';",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' blob: data: *.googleusercontent.com res.cloudinary.com ui-avatars.com; connect-src 'self';",
           }
         ],
       },

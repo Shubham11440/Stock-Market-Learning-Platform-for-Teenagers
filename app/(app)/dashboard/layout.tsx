@@ -46,7 +46,7 @@ export default async function DashboardLayout({
       {/* Main content area — offset by sidebar width on desktop */}
       <DashboardContentWrapper>
         {/* Topbar */}
-        <Topbar />
+        <Topbar user={session?.user} />
 
         {/* Page content */}
         <main className="flex-1 p-4 lg:p-6 pb-20 lg:pb-6 relative">
