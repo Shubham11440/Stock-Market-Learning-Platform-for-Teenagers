@@ -18,7 +18,7 @@ const GOALS = [
   { id: 'LEARN', title: 'Just Learning', description: 'Starting from zero. Teach me the basics.', icon: <BookOpen size={24} /> },
 ]
 
-const STREAK_GOALS = [5, 10, 20]
+const STREAK_GOALS = [5, 10, 20, 30, 60]
 
 export default function OnboardingPage() {
   const router = useRouter()
@@ -213,7 +213,9 @@ export default function OnboardingPage() {
                         : 'bg-surface-2 border-border text-text-1 hover:border-text-3'
                     }`}
                   >
-                    <span className="font-semibold text-lg">{mins} minutes / day</span>
+                    <span className="font-semibold text-lg">
+                      {mins === 60 ? '60+ minutes / day' : `${mins} minutes / day`}
+                    </span>
                     {streakGoal === mins && (
                       <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
                         <div className="w-2.5 h-2.5 bg-primary rounded-full" />
