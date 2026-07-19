@@ -7,6 +7,7 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg'
   collapsed?: boolean
   className?: string
+  forceWhite?: boolean
 }
 
 const sizes = {
@@ -15,8 +16,9 @@ const sizes = {
   lg: { icon: 'w-10 h-10', text: 'text-2xl' },
 }
 
-export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
+export function Logo({ size = 'md', collapsed = false, forceWhite = false, className }: LogoProps) {
   const s = sizes[size]
+  const textColorClass = forceWhite ? 'text-white' : 'text-text-1'
 
   return (
     <Link
@@ -39,7 +41,7 @@ export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
           viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full text-text-1"
+          className={cn("w-full h-full", textColorClass)}
         >
           {/* Back shape - slightly faded */}
           <path
@@ -66,7 +68,8 @@ export function Logo({ size = 'md', collapsed = false, className }: LogoProps) {
         <span
           className={cn(
             s.text,
-            'font-sans font-semibold tracking-tight text-text-1'
+            'font-sans font-semibold tracking-tight',
+            textColorClass
           )}
         >
           StockUp

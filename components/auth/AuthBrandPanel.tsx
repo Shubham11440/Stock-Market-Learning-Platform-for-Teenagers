@@ -7,7 +7,7 @@ export function AuthBrandPanel() {
       {/* Ambient glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
 
-      <Logo size="md" className="relative z-10" />
+      <Logo size="md" className="relative z-10" forceWhite={true} />
 
       {/* Central content */}
       <div className="relative z-10">
