@@ -49,6 +49,7 @@ export function LessonViewer({ lesson, levelId }: { lesson: Lesson, levelId: str
     setIsSaving(true)
     try {
       const result = await saveLessonProgress(
+        levelId,
         lesson.id, 
         score, 
         lesson.quiz?.length || 0, 

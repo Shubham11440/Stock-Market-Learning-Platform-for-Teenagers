@@ -6,6 +6,7 @@ import { revalidatePath } from 'next/cache'
 import { calculateLevel } from '@/lib/xp'
 
 export async function saveLessonProgress(
+  levelId: string,
   lessonId: string,
   score: number,
   totalQuestions: number,
@@ -32,6 +33,34 @@ export async function saveLessonProgress(
   try {
     const user = await db.user.findUniqueOrThrow({ where: { id: session.user.id } })
     
+    // Self-healing: Ensure Level and Lesson exist in DB to prevent foreign key constraint errors
+    // Since lessons are primarily file-based in MVP, they might not be seeded in the DB.
+    await db.level.upsert({
+      where: { id: levelId },
+      update: {},
+      create: {
+        id: levelId,
+        number: Math.floor(Math.random() * 1000000), // Random number to avoid unique constraint clash
+        name: levelId,
+        description: 'Auto-generated level for file-based content',
+        xpRequired: 0
+      }
+    })
+
+    await db.lesson.upsert({
+      where: { id: lessonId },
+      update: {},
+      create: {
+        id: lessonId,
+        levelId: levelId,
+        title: lessonId,
+        slug: lessonId,
+        content: {},
+        xpReward: baseXpReward,
+        order: 1
+      }
+    })
+
     // Check if progress already exists
     const existingProgress = await db.lessonProgress.findFirst({
       where: { userId: session.user.id, lessonId }
