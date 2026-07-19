@@ -2,7 +2,7 @@
 
 import { Bell, Search, User, Settings, LogOut } from 'lucide-react'
 import { ThemeToggle } from '@/components/shared/ThemeToggle'
-import { cn } from '@/lib/utils'
+import { cn, getValidAvatarUrl, getAvatarEmoji } from '@/lib/utils'
 import { useSession, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -84,13 +84,25 @@ export function Topbar({ title, className }: TopbarProps) {
                 aria-label="User menu"
                 className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-primary/30 hover:ring-primary/60 transition-all duration-200 cursor-pointer outline-none"
               >
-                {user.image ? (
-                  <Image src={user.image} alt={user.name || 'User'} width={36} height={36} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white text-sm font-semibold font-display">
-                    {user.name?.[0]?.toUpperCase() || 'S'}
-                  </div>
-                )}
+                {(() => {
+                  const emoji = getAvatarEmoji(user.image)
+                  const validSrc = getValidAvatarUrl(user.image, user.name ?? undefined)
+                  if (emoji) {
+                    return (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary-light/20 flex items-center justify-center text-lg">
+                        {emoji}
+                      </div>
+                    )
+                  }
+                  if (validSrc) {
+                    return <Image src={validSrc} alt={user.name || 'User'} width={36} height={36} className="w-full h-full object-cover" />
+                  }
+                  return (
+                    <div className="w-full h-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white text-sm font-semibold font-display">
+                      {user.name?.[0]?.toUpperCase() || 'S'}
+                    </div>
+                  )
+                })()}
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">

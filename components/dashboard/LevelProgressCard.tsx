@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { LevelBadge } from '@/components/gamification/LevelBadge'
 import { XPBar } from '@/components/dashboard/XPBar'
+import { getValidAvatarUrl } from '@/lib/utils'
 
 export interface LevelProgressCardProps {
   name: string
@@ -63,19 +64,22 @@ export function LevelProgressCard({ name, avatar, currentXp, level }: LevelProgr
             <div className="w-full h-full flex items-center justify-center bg-primary/10 text-4xl">
               {emoji}
             </div>
-          ) : avatar ? (
-            <Image 
-              src={avatar} 
-              alt={`${name}'s avatar`} 
-              fill 
-              className="object-cover"
-              sizes="80px"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-bold text-xl">
-              {name.charAt(0).toUpperCase()}
-            </div>
-          )}
+          ) : (() => {
+            const validSrc = getValidAvatarUrl(avatar, name)
+            return validSrc ? (
+              <Image 
+                src={validSrc} 
+                alt={`${name}'s avatar`} 
+                fill 
+                className="object-cover"
+                sizes="80px"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary font-bold text-xl">
+                {name.charAt(0).toUpperCase()}
+              </div>
+            )
+          })()}
         </div>
         <div className="absolute -bottom-3 -right-3">
           <LevelBadge level={level} size="md" />
