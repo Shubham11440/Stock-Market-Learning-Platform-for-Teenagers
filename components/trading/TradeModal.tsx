@@ -8,6 +8,8 @@ import { StockQuote } from '@/types/market'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
+import toast from 'react-hot-toast'
+
 interface TradeModalProps {
   isOpen: boolean
   onClose: () => void
@@ -55,6 +57,7 @@ export function TradeModal({ isOpen, onClose, quote, userBalance, currentPositio
       if (result.success) {
         setSuccessData({ executedPrice: result.executedPrice || quote.price, qty: quantity })
         setStatus('SUCCESS')
+        toast.success(`Successfully ${type === 'BUY' ? 'bought' : 'sold'} ${quantity} shares of ${quote.symbol}`)
         // We do NOT close the modal immediately, we let the user see the success animation
         // The page data is revalidated in the background
         setTimeout(() => {
@@ -64,10 +67,12 @@ export function TradeModal({ isOpen, onClose, quote, userBalance, currentPositio
       } else {
         setStatus('ERROR')
         setErrorMessage(result.message)
+        toast.error(result.message)
       }
     } catch (error) {
       setStatus('ERROR')
       setErrorMessage('A network error occurred. Please try again.')
+      toast.error('A network error occurred.')
     }
   }
 

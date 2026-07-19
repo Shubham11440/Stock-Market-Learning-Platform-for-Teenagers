@@ -43,12 +43,12 @@ export async function getHistorical(symbol: string, period: '1d' | '1w' | '1m' |
       case '1y': period1.setFullYear(period1.getFullYear() - 1); break
     }
 
-    const raw = await yf.historical(symbol, {
-      period1: period1.toISOString().split('T')[0],
+    const raw = await yf.chart(symbol, {
+      period1: period1,
       interval: period === '1d' || period === '1w' ? '1d' : '1wk',
     })
 
-    const mapped = mapHistoricalResponse(raw)
+    const mapped = mapHistoricalResponse(raw.quotes || [])
     marketCache.set(cacheKey, mapped, CACHE_TTL_HISTORICAL)
     return mapped
   } catch (error) {
