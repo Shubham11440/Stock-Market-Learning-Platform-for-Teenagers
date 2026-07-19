@@ -88,19 +88,19 @@ export function StatsGrid({ profile }: StatsGridProps) {
   ]
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {stats.map((stat, i) => (
         <div 
           key={i} 
-          className="bg-surface border border-border rounded-2xl p-4 flex flex-col hover:border-primary/30 transition-colors"
+          className="bg-surface border border-border rounded-2xl p-4 flex flex-col hover:border-primary/30 transition-colors overflow-hidden"
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center", stat.bg, stat.color)}>
+          <div className="flex items-center gap-2 mb-3">
+            <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center shrink-0", stat.bg, stat.color)}>
               <stat.icon size={16} />
             </div>
-            <span className="text-xs font-semibold text-text-3 tracking-wide">{stat.label}</span>
+            <span className="text-[11px] sm:text-xs font-semibold text-text-3 tracking-wide truncate">{stat.label}</span>
           </div>
-          <div className="text-xl md:text-2xl font-display font-bold text-text-1">
+          <div className="text-lg sm:text-xl font-display font-bold text-text-1 truncate">
             {stat.value}
           </div>
         </div>

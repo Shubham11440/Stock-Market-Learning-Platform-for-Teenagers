@@ -6,6 +6,8 @@ import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
+import { getValidAvatarUrl, getAvatarEmoji } from '@/lib/utils'
+
 interface ProfileHeaderProps {
   profile: any // The returned object from getProfile/getPublicProfile
   isOwnProfile: boolean
@@ -16,6 +18,8 @@ export function ProfileHeader({ profile, isOwnProfile }: ProfileHeaderProps) {
   const featuredBadge = profile.featuredBadgeId 
     ? profile.badges.find((b: any) => b.badge.id === profile.featuredBadgeId)?.badge 
     : null
+    
+  const validAvatar = getValidAvatarUrl(profile.image, profile.name)
 
   return (
     <div className="bg-surface border border-border rounded-2xl p-6 relative overflow-hidden">
@@ -27,11 +31,16 @@ export function ProfileHeader({ profile, isOwnProfile }: ProfileHeaderProps) {
         {/* Avatar */}
         <div className="relative">
           <div className="w-24 h-24 rounded-full border-4 border-surface-2 overflow-hidden bg-surface-3 flex items-center justify-center">
-            {profile.image ? (
-              <Image src={profile.image} alt={profile.name} width={96} height={96} className="w-full h-full object-cover" />
-            ) : (
-              <User size={48} className="text-text-3" />
-            )}
+            {(() => {
+              const avatarEmoji = getAvatarEmoji(profile.image)
+              if (avatarEmoji) {
+                return <span className="text-5xl">{avatarEmoji}</span>
+              }
+              if (validAvatar) {
+                return <Image src={validAvatar} alt={profile.name} width={96} height={96} className="w-full h-full object-cover" />
+              }
+              return <User size={48} className="text-text-3" />
+            })()}
           </div>
           <div className="absolute -bottom-2 -right-2 bg-primary text-white text-xs font-bold px-2 py-1 rounded-md border-2 border-surface shadow-sm">
             Lvl {profile.level}

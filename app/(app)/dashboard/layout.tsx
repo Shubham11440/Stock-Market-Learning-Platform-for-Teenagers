@@ -13,7 +13,13 @@ import { StockBot } from '@/components/ai/StockBot'
 //  │  MobileNav (bottom, mobile only)             │
 //  └──────────────────────────────────────────────┘
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ 
+  children,
+  modal 
+}: { 
+  children: React.ReactNode
+  modal: React.ReactNode 
+}) {
   return (
     <div className="min-h-dvh bg-bg flex">
       {/* Desktop sidebar — fixed left */}
@@ -25,7 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <Topbar />
 
         {/* Page content */}
-        <main className="flex-1 p-4 lg:p-6 pb-20 lg:pb-6">
+        <main className="flex-1 p-4 lg:p-6 pb-20 lg:pb-6 relative">
           {children}
         </main>
       </div>
@@ -35,6 +41,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* AI Mentor Floating Widget */}
       <StockBot />
+      
+      {/* Intercepted Modals Render Here */}
+      {modal}
     </div>
   )
 }

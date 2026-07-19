@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Trophy, Copy, CheckCircle2, User, LogOut } from 'lucide-react'
 import Image from 'next/image'
+import { getValidAvatarUrl, getAvatarEmoji } from '@/lib/utils'
 import { leaveSquadAction } from '@/actions/squads'
 import toast from 'react-hot-toast'
 
@@ -113,7 +114,6 @@ export function SquadHub({ squad, currentUserId }: SquadHubProps) {
               avatar_5: '🦅', avatar_6: '🦉', avatar_7: '🦄', avatar_8: '🐉',
             }
             const isEmoji = member.user.image?.startsWith('avatar_')
-            const emoji = isEmoji ? avatarsMap[member.user.image!] : null
 
             return (
               <div 
@@ -126,13 +126,17 @@ export function SquadHub({ squad, currentUserId }: SquadHubProps) {
                 
                 <div className="col-span-7 flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-surface-2 border border-border flex items-center justify-center overflow-hidden flex-shrink-0">
-                    {emoji ? (
-                      <span className="text-xl">{emoji}</span>
-                    ) : member.user.image ? (
-                      <Image src={member.user.image} alt={member.user.name} width={40} height={40} className="w-full h-full object-cover" />
-                    ) : (
-                      <User size={20} className="text-text-3" />
-                    )}
+                    {(() => {
+                      const emoji = getAvatarEmoji(member.user.image)
+                      if (emoji) {
+                        return <span className="text-xl">{emoji}</span>
+                      }
+                      const validAvatar = getValidAvatarUrl(member.user.image, member.user.name)
+                      if (validAvatar) {
+                        return <Image src={validAvatar} alt={member.user.name} width={40} height={40} className="w-full h-full object-cover" />
+                      }
+                      return <User size={20} className="text-text-3" />
+                    })()}
                   </div>
                   <div>
                     <p className={`font-semibold text-sm ${isMe ? 'text-primary' : 'text-text-1'}`}>

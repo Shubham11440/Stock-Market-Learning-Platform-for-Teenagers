@@ -1,4 +1,5 @@
 import { LeaderboardEntry } from '@/types/gamification';
+import { getValidAvatarUrl, getAvatarEmoji } from '@/lib/utils';
 import { Trophy, Medal, User, Award } from 'lucide-react';
 import Image from 'next/image';
 
@@ -44,18 +45,17 @@ export function LeaderboardList({ entries }: { entries: LeaderboardEntry[] }) {
               <div className="col-span-7 sm:col-span-8 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-surface-2 border border-border flex items-center justify-center overflow-hidden flex-shrink-0">
                   {(() => {
-                    const avatarsMap: Record<string, string> = {
-                      avatar_1: '🦊', avatar_2: '🐼', avatar_3: '🦁', avatar_4: '🐯',
-                      avatar_5: '🦅', avatar_6: '🦉', avatar_7: '🦄', avatar_8: '🐉',
-                    }
-                    const isEmoji = entry.avatar && entry.avatar.startsWith('avatar_')
-                    const emoji = isEmoji ? avatarsMap[entry.avatar!] : null
-
-                    if (emoji) {
+                    if (entry.rank <= 3) {
+                      const emoji = entry.rank === 1 ? '🥇' : entry.rank === 2 ? '🥈' : '🥉'
                       return <span className="text-xl">{emoji}</span>
                     }
-                    if (entry.avatar) {
-                      return <Image src={entry.avatar} alt={entry.name} width={40} height={40} className="w-full h-full object-cover" />
+                    const avatarEmoji = getAvatarEmoji(entry.avatar)
+                    if (avatarEmoji) {
+                      return <span className="text-xl">{avatarEmoji}</span>
+                    }
+                    const validAvatar = getValidAvatarUrl(entry.avatar, entry.name)
+                    if (validAvatar) {
+                      return <Image src={validAvatar} alt={entry.name} width={40} height={40} className="w-full h-full object-cover" />
                     }
                     return <User size={20} className="text-text-3" />
                   })()}

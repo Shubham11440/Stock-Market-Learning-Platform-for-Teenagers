@@ -193,3 +193,32 @@ export function getInitials(name: string): string {
     .toUpperCase()
     .slice(0, 2)
 }
+
+/**
+ * Ensures an avatar string is a valid URL or path.
+ * If it's a bare string like "avatar_7", it returns a fallback ui-avatars.com URL.
+ */
+export function getValidAvatarUrl(image: string | null | undefined, name?: string): string | null {
+  if (!image) return null
+  
+  // If it's already a valid absolute URL or an absolute path
+  if (image.startsWith('http') || image.startsWith('data:') || image.startsWith('/')) {
+    return image
+  }
+
+  // Fallback for strings like "avatar_7"
+  const safeName = name ? encodeURIComponent(name) : 'U'
+  return `https://ui-avatars.com/api/?name=${safeName}&background=random`
+}
+
+/**
+ * Get an emoji for internal avatar string (e.g. "avatar_7" -> "🦄")
+ */
+export function getAvatarEmoji(avatar: string | null | undefined): string | null {
+  if (!avatar || !avatar.startsWith('avatar_')) return null
+  const avatarsMap: Record<string, string> = {
+    avatar_1: '🦊', avatar_2: '🐼', avatar_3: '🦁', avatar_4: '🐯',
+    avatar_5: '🦅', avatar_6: '🦉', avatar_7: '🦄', avatar_8: '🐉',
+  }
+  return avatarsMap[avatar] || '👤'
+}

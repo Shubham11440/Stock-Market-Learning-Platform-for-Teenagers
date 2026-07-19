@@ -126,4 +126,4 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Built by the StockUp Team.
+Built by Shubham Mali.
