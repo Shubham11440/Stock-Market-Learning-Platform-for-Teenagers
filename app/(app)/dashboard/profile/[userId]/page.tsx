@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 }
 
 interface PublicProfileProps {
-  params: { userId: string }
+  params: Promise<{ userId: string }>
 }
 
 export default async function PublicProfilePage({ params }: PublicProfileProps) {
-  const profile = await getPublicProfile(params.userId)
+  const { userId } = await params
+  const profile = await getPublicProfile(userId)
   
   if (!profile) {
     return (

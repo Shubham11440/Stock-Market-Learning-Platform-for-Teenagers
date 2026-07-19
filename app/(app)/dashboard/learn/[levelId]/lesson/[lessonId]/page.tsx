@@ -8,12 +8,12 @@ import { X } from 'lucide-react'
 export default async function LessonPage({ 
   params 
 }: { 
-  params: { levelId: string, lessonId: string } 
+  params: Promise<{ levelId: string, lessonId: string }>
 }) {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
-  const { levelId, lessonId } = params
+  const { levelId, lessonId } = await params
 
   // 1. Fetch and validate JSON content
   const lesson = await getLessonContent(levelId, lessonId)

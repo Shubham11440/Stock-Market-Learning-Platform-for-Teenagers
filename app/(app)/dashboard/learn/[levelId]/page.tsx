@@ -4,11 +4,12 @@ import Link from 'next/link'
 import { ArrowLeft, BookOpen, Lock } from 'lucide-react'
 
 // Mocking the lessons in a level. In reality, read the file system directory `content/levels/[levelId]/`.
-export default async function LevelPage({ params }: { params: { levelId: string } }) {
+// Next.js 15+ requires params to be awaited
+export default async function LevelPage({ params }: { params: Promise<{ levelId: string }> }) {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
-  const { levelId } = params
+  const { levelId } = await params
 
   // For Phase 4, we only have Rookie Lesson 1 built.
   const lessons = levelId === 'rookie' ? [

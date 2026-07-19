@@ -14,11 +14,9 @@ async function resolveSymbol(raw: string): Promise<{ symbol: string; quote: Awai
   let quote = await getQuote(raw)
   if (quote) return { symbol: raw, quote }
 
-  // 2. If no dot, try appending common exchange suffixes
+  // 2. If no dot suffix, try appending common exchange suffixes
   if (!raw.includes('.')) {
-    const suffixes = ['.NS', '.BO', ''] // NSE, BSE
-    for (const suffix of suffixes) {
-      if (suffix === '') continue
+    for (const suffix of ['.NS', '.BO']) {
       const candidate = `${raw}${suffix}`
       quote = await getQuote(candidate)
       if (quote) return { symbol: candidate, quote }
@@ -43,10 +41,13 @@ function StockNotFound({ symbol }: { symbol: string }) {
         </div>
         <h1 className="font-display font-bold text-2xl text-text-1 mb-3">Stock Not Found</h1>
         <p className="text-text-2 max-w-sm mb-2">
-          We couldn't find a stock with the symbol <span className="font-bold text-text-1">{symbol}</span>.
+          We couldn't find a stock with the symbol{' '}
+          <span className="font-bold text-text-1 font-mono">{symbol}</span>.
         </p>
         <p className="text-text-3 text-sm mb-8 max-w-sm">
-          For Indian stocks, try adding the exchange suffix — for example, <span className="font-mono text-primary">RELIANCE.NS</span> for NSE or <span className="font-mono text-primary">RELIANCE.BO</span> for BSE.
+          For Indian stocks, try the exchange suffix — e.g.{' '}
+          <span className="font-mono text-primary">RELIANCE.NS</span> for NSE or{' '}
+          <span className="font-mono text-primary">RELIANCE.BO</span> for BSE.
         </p>
         <Link
           href="/dashboard/trading"
@@ -59,12 +60,21 @@ function StockNotFound({ symbol }: { symbol: string }) {
   )
 }
 
-export default async function StockPage({ params }: { params: { symbol: string } }) {
+// Next.js 15+ requires params to be awaited
+export default async function StockPage({ params }: { params: Promise<{ symbol: string }> }) {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
-  // Decode the symbol — handles RELIANCE%2ENS → RELIANCE.NS
-  const decodedSymbol = decodeURIComponent(params.symbol).toUpperCase()
+  // IMPORTANT: In Next.js 15+, params is a Promise — must be awaited
+  const { symbol: rawSymbol } = await params
+
+  // Defensive guard — should never happen in a valid dynamic route
+  if (!rawSymbol) {
+    return <StockNotFound symbol="(unknown)" />
+  }
+
+  // Decode URL-encoded symbols (e.g. RELIANCE%2ENS → RELIANCE.NS)
+  const decodedSymbol = decodeURIComponent(rawSymbol).toUpperCase()
 
   // Resolve the symbol with auto-suffix fallback
   const { symbol: resolvedSymbol, quote } = await resolveSymbol(decodedSymbol)
@@ -73,7 +83,7 @@ export default async function StockPage({ params }: { params: { symbol: string }
     return <StockNotFound symbol={decodedSymbol} />
   }
 
-  // Fetch historical and user data in parallel
+  // Fetch all remaining data in parallel
   const [historicalData, user, position] = await Promise.all([
     getHistorical(resolvedSymbol, '1m'),
     db.user.findUnique({
