@@ -135,8 +135,8 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto px-4 flex flex-col h-full min-h-[500px]">
-      <div className="mb-10 mt-4">
+    <div className="w-full max-w-md mx-auto px-4 sm:px-6 flex flex-col min-h-dvh py-8 sm:py-12">
+      <div className="mb-10">
         <OnboardingProgress total={3} current={step} />
       </div>
 
