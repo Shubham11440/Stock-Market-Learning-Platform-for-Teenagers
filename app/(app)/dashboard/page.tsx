@@ -8,6 +8,8 @@ import { DailyChallenge } from '@/components/dashboard/DailyChallenge'
 import { TrendingStocks } from '@/components/dashboard/TrendingStocks'
 import { NewsHighlight } from '@/components/dashboard/NewsHighlight'
 
+import { Greeting } from '@/components/dashboard/Greeting'
+
 export default async function DashboardPage() {
   const session = await auth()
   
@@ -34,18 +36,13 @@ export default async function DashboardPage() {
     redirect('/login')
   }
 
-  // A small dynamic greeting based on time of day
-  const hour = new Date().getHours()
-  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
   const firstName = user.name.split(' ')[0]
 
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto h-full">
       {/* ── Header ───────────────────────────────────────────── */}
       <header className="flex flex-col gap-1">
-        <h1 className="font-display font-bold text-3xl sm:text-4xl text-text-1">
-          {greeting}, {firstName}!
-        </h1>
+        <Greeting firstName={firstName} />
         <p className="text-text-3">
           Here&apos;s your market overview for today.
         </p>

@@ -6,6 +6,7 @@ import { cn, getValidAvatarUrl, getAvatarEmoji } from '@/lib/utils'
 import { useSession, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Logo } from '@/components/shared/Logo'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,12 +39,16 @@ export function Topbar({ title, className, user: propUser }: TopbarProps) {
         className
       )}
     >
-      {/* Page title */}
-      <div className="flex-1 min-w-0">
-        {title && (
+      {/* Page title or Logo */}
+      <div className="flex-1 min-w-0 flex items-center">
+        {title ? (
           <h1 className="text-base font-semibold text-text-1 font-display truncate">
             {title}
           </h1>
+        ) : (
+          <div className="lg:hidden scale-90 origin-left">
+            <Logo size="sm" />
+          </div>
         )}
       </div>
 

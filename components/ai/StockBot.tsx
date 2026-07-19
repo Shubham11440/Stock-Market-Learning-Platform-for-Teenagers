@@ -87,7 +87,7 @@ export function StockBot() {
         id="tour-stockbot"
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-6 right-6 z-40 p-4 rounded-full shadow-premium-lg transition-all transform hover:scale-105 active:scale-95",
+          "fixed bottom-24 lg:bottom-6 right-4 lg:right-6 z-40 p-3.5 lg:p-4 rounded-full shadow-premium-lg transition-all transform hover:scale-105 active:scale-95",
           "bg-gradient-to-r from-primary to-primary-light text-white",
           isOpen && "scale-0 opacity-0 pointer-events-none"
         )}
@@ -103,7 +103,7 @@ export function StockBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="fixed bottom-6 right-6 w-[380px] max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-6rem)] z-50 flex flex-col premium-card overflow-hidden"
+            className="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 w-[380px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-8rem)] z-50 flex flex-col premium-card overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-border bg-surface/50 backdrop-blur-md">

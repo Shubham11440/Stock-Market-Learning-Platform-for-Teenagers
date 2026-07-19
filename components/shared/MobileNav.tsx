@@ -14,10 +14,10 @@ import { cn } from '@/lib/utils'
 // Show the 5 most important tabs on mobile bottom nav
 const mobileNavItems = [
   { href: '/dashboard', label: 'Home', icon: LayoutDashboard },
-  { href: '/learn', label: 'Learn', icon: GraduationCap },
-  { href: '/trade', label: 'Trade', icon: TrendingUp },
-  { href: '/arena', label: 'Arena', icon: Zap },
-  { href: '/leaderboard', label: 'Ranks', icon: Trophy },
+  { href: '/dashboard/learn', label: 'Learn', icon: GraduationCap },
+  { href: '/dashboard/trading', label: 'Trade', icon: TrendingUp },
+  { href: '/dashboard/arena', label: 'Arena', icon: Zap },
+  { href: '/dashboard/leaderboard', label: 'Ranks', icon: Trophy },
 ] as const
 
 export function MobileNav() {
@@ -34,7 +34,10 @@ export function MobileNav() {
       )}
     >
       {mobileNavItems.map((item) => {
-        const active = pathname === item.href || pathname.startsWith(item.href + '/')
+        const active =
+          item.href === '/dashboard'
+            ? pathname === '/dashboard'
+            : pathname === item.href || pathname.startsWith(item.href + '/')
         const Icon = item.icon
         return (
           <Link
