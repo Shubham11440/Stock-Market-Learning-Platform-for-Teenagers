@@ -79,7 +79,7 @@ export function StockSearch({ className }: { className?: string }) {
   const handleSelect = (symbol: string) => {
     setIsOpen(false)
     setQuery('')
-    router.push(`/trade/${symbol}`)
+    router.push(`/dashboard/trading/${encodeURIComponent(symbol)}`)
   }
 
   return (

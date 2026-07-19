@@ -38,7 +38,7 @@ export default function TradePage() {
             {watchlisted.map(stock => (
               <Link 
                 key={stock.symbol} 
-                href={`/dashboard/trading/${stock.symbol}`}
+                href={`/dashboard/trading/${encodeURIComponent(stock.symbol)}`}
                 className="flex items-center justify-between p-4 bg-surface-2 hover:bg-surface border border-border/50 rounded-2xl transition-colors group"
               >
                 <div>
