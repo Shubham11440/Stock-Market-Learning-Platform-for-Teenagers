@@ -20,6 +20,7 @@ import {
 } from 'lucide-react'
 import { Logo } from '@/components/shared/Logo'
 import { cn } from '@/lib/utils'
+import { useSidebarStore } from '@/store/useSidebarStore'
 
 // ── Nav items ──────────────────────────────────────────────────────────
 const navItems = [
@@ -82,13 +83,13 @@ const bottomItems = [
 // ── Sidebar Component ──────────────────────────────────────────────────
 export function Sidebar() {
   const pathname = usePathname()
-  const [collapsed, setCollapsed] = useState(false)
+  const { collapsed, setCollapsed } = useSidebarStore()
 
   // Persist collapse state in localStorage
   useEffect(() => {
     const stored = localStorage.getItem('sidebar-collapsed')
     if (stored !== null) setCollapsed(stored === 'true')
-  }, [])
+  }, [setCollapsed])
 
   const toggle = () => {
     const next = !collapsed

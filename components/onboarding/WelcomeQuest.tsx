@@ -25,6 +25,9 @@ export function WelcomeQuest({ initialHasCompleted }: WelcomeQuestProps) {
     if (hasMounted.current) return
     hasMounted.current = true
 
+    const localSkipped = localStorage.getItem('stockup_tour_completed')
+    if (localSkipped === 'true') return
+
     if (!initialHasCompleted) {
       const timer = setTimeout(() => {
         setStage('WELCOME')
@@ -64,6 +67,7 @@ export function WelcomeQuest({ initialHasCompleted }: WelcomeQuestProps) {
   const handleSkipTour = () => {
     setStage('IDLE')
     endTour()
+    localStorage.setItem('stockup_tour_completed', 'true')
     if (!initialHasCompleted) {
       recordAnalytics('skipped')
     }
@@ -73,6 +77,7 @@ export function WelcomeQuest({ initialHasCompleted }: WelcomeQuestProps) {
   const handleCloseSuccess = () => {
     setStage('IDLE')
     endTour()
+    localStorage.setItem('stockup_tour_completed', 'true')
   }
 
   // Initialize and run Driver.js
@@ -95,6 +100,7 @@ export function WelcomeQuest({ initialHasCompleted }: WelcomeQuestProps) {
           driverObj.destroy()
           setStage('IDLE')
           endTour()
+          localStorage.setItem('stockup_tour_completed', 'true')
           if (!initialHasCompleted) recordAnalytics('skipped')
         }
       },
@@ -107,6 +113,7 @@ export function WelcomeQuest({ initialHasCompleted }: WelcomeQuestProps) {
             nextBtn.onclick = () => {
               driverObj.destroy()
               setStage('SUCCESS')
+              localStorage.setItem('stockup_tour_completed', 'true')
               if (!initialHasCompleted) recordAnalytics('completed')
             }
           }

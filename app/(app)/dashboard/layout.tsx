@@ -6,6 +6,8 @@ import { WelcomeQuest } from '@/components/onboarding/WelcomeQuest'
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
 
+import { DashboardContentWrapper } from '@/components/shared/DashboardContentWrapper'
+
 // Dashboard layout:
 //  ┌──────────────────────────────────────────────┐
 //  │  Sidebar (desktop) │  Topbar                 │
@@ -42,7 +44,7 @@ export default async function DashboardLayout({
       <Sidebar />
 
       {/* Main content area — offset by sidebar width on desktop */}
-      <div className="flex-1 flex flex-col lg:pl-[240px] transition-[padding] duration-300 min-w-0">
+      <DashboardContentWrapper>
         {/* Topbar */}
         <Topbar />
 
@@ -50,7 +52,7 @@ export default async function DashboardLayout({
         <main className="flex-1 p-4 lg:p-6 pb-20 lg:pb-6 relative">
           {children}
         </main>
-      </div>
+      </DashboardContentWrapper>
 
       {/* Mobile bottom nav */}
       <MobileNav />
