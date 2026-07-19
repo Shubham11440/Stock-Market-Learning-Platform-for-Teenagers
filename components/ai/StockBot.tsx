@@ -84,6 +84,7 @@ export function StockBot() {
     <>
       {/* Floating Button */}
       <button
+        id="tour-stockbot"
         onClick={() => setIsOpen(true)}
         className={cn(
           "fixed bottom-6 right-6 z-40 p-4 rounded-full shadow-premium-lg transition-all transform hover:scale-105 active:scale-95",

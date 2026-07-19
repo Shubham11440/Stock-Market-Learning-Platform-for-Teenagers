@@ -81,6 +81,7 @@ export function Topbar({ title, className }: TopbarProps) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
+                id="tour-profile"
                 aria-label="User menu"
                 className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-primary/30 hover:ring-primary/60 transition-all duration-200 cursor-pointer outline-none"
               >

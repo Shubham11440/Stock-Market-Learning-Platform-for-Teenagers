@@ -2,6 +2,9 @@ import { Sidebar } from '@/components/shared/Sidebar'
 import { MobileNav } from '@/components/shared/MobileNav'
 import { Topbar } from '@/components/shared/Topbar'
 import { StockBot } from '@/components/ai/StockBot'
+import { WelcomeQuest } from '@/components/onboarding/WelcomeQuest'
+import { auth } from '@/lib/auth'
+import { db } from '@/lib/db'
 
 // Dashboard layout:
 //  ┌──────────────────────────────────────────────┐
@@ -13,13 +16,26 @@ import { StockBot } from '@/components/ai/StockBot'
 //  │  MobileNav (bottom, mobile only)             │
 //  └──────────────────────────────────────────────┘
 
-export default function DashboardLayout({ 
+export default async function DashboardLayout({ 
   children,
   modal 
 }: { 
   children: React.ReactNode
   modal: React.ReactNode 
 }) {
+  const session = await auth()
+  let hasCompletedTour = true
+
+  if (session?.user?.email) {
+    const user = await db.user.findUnique({
+      where: { email: session.user.email },
+      select: { hasCompletedTour: true }
+    })
+    if (user) {
+      hasCompletedTour = user.hasCompletedTour
+    }
+  }
+
   return (
     <div className="min-h-dvh bg-bg flex">
       {/* Desktop sidebar — fixed left */}
@@ -44,6 +60,9 @@ export default function DashboardLayout({
       
       {/* Intercepted Modals Render Here */}
       {modal}
+
+      {/* Welcome Quest / Product Tour */}
+      <WelcomeQuest initialHasCompleted={hasCompletedTour} />
     </div>
   )
 }

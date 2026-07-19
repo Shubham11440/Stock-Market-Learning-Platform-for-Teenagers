@@ -203,6 +203,7 @@ function NavItem({
 
   return (
     <Link
+      id={`tour-${item.label.toLowerCase()}`}
       href={item.href}
       title={collapsed ? item.label : undefined}
       className={cn(

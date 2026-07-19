@@ -78,6 +78,11 @@ model User {
   showSquad           Boolean   @default(true)
   featuredBadgeId     String?
   
+  // Tour & Onboarding
+  hasCompletedTour    Boolean   @default(false)
+  tourCompletedAt     DateTime?
+  tourVersion         Int       @default(1)
+
   emailVerified       DateTime?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt

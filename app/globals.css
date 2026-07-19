@@ -237,3 +237,82 @@ body {
   scrollbar-width: thin;
   scrollbar-color: rgb(var(--surface-3)) transparent;
 }
+
+/* ── Driver.js Customization ─────────────────────────────────────────── */
+div#driver-popover-item {
+  background-color: rgb(var(--surface));
+  color: rgb(var(--text-1));
+  border: 1px solid rgb(var(--border));
+  border-radius: 16px;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+  font-family: var(--font-inter, system-ui, sans-serif);
+  padding: 20px;
+}
+
+.dark div#driver-popover-item {
+  background: linear-gradient(180deg, rgba(25, 25, 25, 1) 0%, rgba(15, 15, 15, 1) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+div#driver-popover-item .driver-popover-title {
+  font-family: var(--font-outfit, system-ui, sans-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgb(var(--text-1));
+  margin-bottom: 8px;
+}
+
+div#driver-popover-item .driver-popover-description {
+  color: rgb(var(--text-2));
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+div#driver-popover-item .driver-popover-footer {
+  margin-top: 16px;
+}
+
+div#driver-popover-item .driver-popover-progress-text {
+  color: rgb(var(--text-3));
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+div#driver-popover-item .driver-popover-next-btn,
+div#driver-popover-item .driver-popover-prev-btn {
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--surface-2));
+  color: rgb(var(--text-1));
+  transition: all 0.2s;
+  text-shadow: none;
+}
+
+div#driver-popover-item .driver-popover-next-btn:hover,
+div#driver-popover-item .driver-popover-prev-btn:hover {
+  background-color: rgb(var(--surface-3));
+}
+
+div#driver-popover-item .driver-popover-next-btn {
+  background-color: rgb(var(--primary));
+  color: white;
+  border-color: rgb(var(--primary));
+}
+
+div#driver-popover-item .driver-popover-next-btn:hover {
+  background-color: rgb(var(--primary-dark));
+}
+
+/* Close button */
+div#driver-popover-item .driver-popover-close-btn {
+  color: rgb(var(--text-3));
+  transition: color 0.2s;
+}
+div#driver-popover-item .driver-popover-close-btn:hover {
+  color: rgb(var(--text-1));
+}

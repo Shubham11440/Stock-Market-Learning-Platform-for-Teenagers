@@ -191,6 +191,34 @@ export function SettingsForm({ user }: { user: any }) {
           </div>
         </div>
 
+        {/* Help & Onboarding */}
+        <div className="bg-surface border border-border rounded-2xl p-6 space-y-6 md:col-span-2">
+          <div className="flex items-center gap-3 border-b border-border pb-4">
+            <span className="text-2xl">🗺️</span>
+            <h2 className="text-xl font-display font-bold text-text-1">Help & Onboarding</h2>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="text-sm font-semibold text-text-1">Product Tour</h4>
+                <p className="text-xs text-text-3">Replay the Welcome Quest to re-familiarize yourself with StockUp.</p>
+              </div>
+              <Button type="button" onClick={() => {
+                // Delay so dropdowns or popovers close
+                setTimeout(() => {
+                  window.dispatchEvent(new Event('start-tour-manually'))
+                  // We'll also use Zustand just in case
+                  const startTour = require('@/store/useTourStore').useTourStore.getState().startTour
+                  startTour()
+                }, 100)
+              }} variant="outline">
+                Take Product Tour
+              </Button>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div className="flex justify-end pt-4 border-t border-border">
