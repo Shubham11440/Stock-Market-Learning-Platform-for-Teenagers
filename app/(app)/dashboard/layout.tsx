@@ -18,6 +18,8 @@ import { DashboardContentWrapper } from '@/components/shared/DashboardContentWra
 //  │  MobileNav (bottom, mobile only)             │
 //  └──────────────────────────────────────────────┘
 
+export const dynamic = 'force-dynamic'
+
 export default async function DashboardLayout({ 
   children,
   modal 
