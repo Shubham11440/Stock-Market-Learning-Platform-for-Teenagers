@@ -105,7 +105,7 @@ export function LessonViewer({ lesson, levelId }: { lesson: Lesson, levelId: str
           newLevel={celebrationData.newLevel}
           onContinue={() => {
             // Navigate back to the level overview
-            router.push(`/learn/${levelId}`)
+            router.push(`/dashboard/learn/${levelId}`)
           }}
         />
       )}
