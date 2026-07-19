@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 
 export default async function NewsPage() {
-  const newsList = await getMarketNews('India Stock Market NSE BSE')
+  const newsList = await getMarketNews('NIFTY 50')
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">

@@ -14,7 +14,7 @@ export interface NewsArticle {
   url: string
 }
 
-export async function getMarketNews(query: string = 'Stock Market India'): Promise<NewsArticle[]> {
+export async function getMarketNews(query: string = 'NIFTY 50'): Promise<NewsArticle[]> {
   try {
     const result = await yf.search(query, { newsCount: 15 }) as any
 

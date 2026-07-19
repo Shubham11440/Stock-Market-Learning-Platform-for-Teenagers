@@ -47,7 +47,7 @@ export function SettingsForm({ user }: { user: any }) {
     <div className="space-y-8">
       {/* Real Money Unlock Banner */}
       <div className="bg-gradient-to-r from-primary/10 to-surface-2 border border-primary/20 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
+        {/* <div>
           <h3 className="text-lg font-bold text-text-1 flex items-center gap-2">
             <Lock className="text-primary" size={20} />
             Real Money Investing
@@ -55,7 +55,7 @@ export function SettingsForm({ user }: { user: any }) {
           <p className="text-sm text-text-3 mt-1">
             Status: <strong className="text-text-1">{user.unlockStatus.replace(/_/g, ' ')}</strong>
           </p>
-        </div>
+        </div> */}
         <Button onClick={() => setUnlockModalOpen(true)} variant={user.unlockStatus === 'UNLOCKED' ? 'outline' : 'default'}>
           {user.unlockStatus === 'UNLOCKED' ? 'View Details' : 'Continue Unlock'}
         </Button>
