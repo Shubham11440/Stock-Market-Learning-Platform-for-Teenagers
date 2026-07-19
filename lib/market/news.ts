@@ -1,4 +1,7 @@
-import yahooFinance from 'yahoo-finance2'
+import YahooFinance from 'yahoo-finance2'
+
+// yahoo-finance2 v4 requires class instantiation
+const yf = new YahooFinance({ suppressNotices: ['yahooSurvey'] })
 
 export interface NewsArticle {
   id: string
@@ -13,7 +16,7 @@ export interface NewsArticle {
 
 export async function getMarketNews(query: string = 'Stock Market India'): Promise<NewsArticle[]> {
   try {
-    const result = await yahooFinance.search(query, { newsCount: 15 }) as any
+    const result = await yf.search(query, { newsCount: 15 }) as any
 
     if (!result || !result.news) {
       return []
