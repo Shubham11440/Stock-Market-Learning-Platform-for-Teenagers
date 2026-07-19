@@ -1,9 +1,9 @@
 import { auth } from '@/lib/auth'
+import { db } from '@/lib/db'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, BookOpen, Lock } from 'lucide-react'
+import { ArrowLeft, BookOpen, Lock, CheckCircle } from 'lucide-react'
 
-// Mocking the lessons in a level. In reality, read the file system directory `content/levels/[levelId]/`.
 // Next.js 15+ requires params to be awaited
 export default async function LevelPage({ params }: { params: Promise<{ levelId: string }> }) {
   const session = await auth()
@@ -11,11 +11,19 @@ export default async function LevelPage({ params }: { params: Promise<{ levelId:
 
   const { levelId } = await params
 
+  // Fetch user's completed lessons
+  const progress = await db.lessonProgress.findMany({
+    where: { userId: session.user.id, completed: true },
+    select: { lessonId: true }
+  })
+  const completedLessonIds = new Set(progress.map(p => p.lessonId))
+
   // For Phase 4, we only have Rookie Lesson 1 built.
+  // Sequential unlocking: Lesson N is unlocked if Lesson N-1 is completed.
   const lessons = levelId === 'rookie' ? [
-    { id: 'lesson-1', title: 'What is a Stock?', isUnlocked: true, isCompleted: false },
-    { id: 'lesson-2', title: 'The Stock Exchange', isUnlocked: false, isCompleted: false },
-    { id: 'lesson-3', title: 'Bulls and Bears', isUnlocked: false, isCompleted: false },
+    { id: 'lesson-1', title: 'What is a Stock?', isUnlocked: true, isCompleted: completedLessonIds.has('lesson-1') },
+    { id: 'lesson-2', title: 'The Stock Exchange', isUnlocked: completedLessonIds.has('lesson-1'), isCompleted: completedLessonIds.has('lesson-2') },
+    { id: 'lesson-3', title: 'Bulls and Bears', isUnlocked: completedLessonIds.has('lesson-2'), isCompleted: completedLessonIds.has('lesson-3') },
   ] : [
     { id: 'lesson-1', title: 'Coming Soon', isUnlocked: false, isCompleted: false },
   ]
@@ -42,9 +50,10 @@ export default async function LevelPage({ params }: { params: Promise<{ levelId:
           >
             <div className="flex items-center gap-4">
               <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                lesson.isCompleted ? 'bg-green-500/10 text-green-500' :
                 lesson.isUnlocked ? 'bg-primary/10 text-primary' : 'bg-surface-2 text-text-3'
               }`}>
-                {lesson.isUnlocked ? <BookOpen size={20} /> : <Lock size={20} />}
+                {lesson.isCompleted ? <CheckCircle size={20} /> : lesson.isUnlocked ? <BookOpen size={20} /> : <Lock size={20} />}
               </div>
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-text-3 mb-1 block">
