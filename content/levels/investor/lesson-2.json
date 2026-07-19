@@ -1,0 +1,86 @@
+{
+  "id": "lesson-2",
+  "title": "Index Funds & Passive Investing",
+  "description": "How to beat 90% of professional traders doing absolutely nothing.",
+  "xpReward": 500,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "The Brutal Truth",
+      "content": "Statistically, over a 10-year period, 90% of professional Wall Street fund managers fail to beat the overall market average (the S&P 500)."
+    },
+    {
+      "id": "s2",
+      "title": "The Index Fund",
+      "content": "An index fund is an ETF or mutual fund that simply buys everything in the S&P 500. It doesn't try to be smart or predict the future. It just matches the market."
+    },
+    {
+      "id": "s3",
+      "title": "Dollar Cost Averaging",
+      "content": "The ultimate strategy: Auto-invest $100 into an S&P 500 Index Fund every week, regardless of if the market is up or down. Over decades, compound interest will make you wealthy."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is an Index Fund?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A fund run by an active manager who constantly trades",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "A passive fund designed to perfectly track a market index like the S&P 500",
+          "isCorrect": true,
+          "explanation": "Index funds don't pick winners; they just buy everything."
+        },
+        {
+          "id": "o3",
+          "text": "A secret fund only for billionaires",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "What is Dollar Cost Averaging (DCA)?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Investing a fixed amount of money on a regular schedule, ignoring short-term price changes",
+          "isCorrect": true,
+          "explanation": "DCA removes emotion and timing from investing."
+        },
+        {
+          "id": "o2",
+          "text": "Only investing when the market crashes",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "Selling all your stocks to average out your losses",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "True or False: Most active professional fund managers beat the S&P 500 over a 10 year period.",
+      "options": [
+        {
+          "id": "o1",
+          "text": "True",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "False",
+          "isCorrect": true,
+          "explanation": "Very few professionals beat the passive index over a long timeframe."
+        }
+      ]
+    }
+  ]
+}

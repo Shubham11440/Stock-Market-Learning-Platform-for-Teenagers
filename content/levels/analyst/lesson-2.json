@@ -1,0 +1,69 @@
+{
+  "id": "lesson-2",
+  "title": "Introduction to P/E Ratio",
+  "description": "The most famous valuation metric in finance.",
+  "xpReward": 200,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Price to Earnings",
+      "content": "The P/E ratio tells you how much investors are willing to pay for $1 of the company's profit."
+    },
+    {
+      "id": "s2",
+      "title": "How to calculate",
+      "content": "P/E = (Stock Price) / (Earnings Per Share). If a stock is $50 and earns $5 per share, its P/E is 10."
+    },
+    {
+      "id": "s3",
+      "title": "Is it expensive?",
+      "content": "A high P/E (like 50) means the stock is expensive, usually because investors expect huge future growth. A low P/E (like 8) might mean the stock is cheap, or the company is struggling."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "If a stock costs $100 and earns $2 per share, what is its P/E ratio?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "50",
+          "isCorrect": true,
+          "explanation": "$100 / $2 = 50."
+        },
+        {
+          "id": "o2",
+          "text": "200",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "2",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Generally, a very high P/E ratio suggests...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The stock is cheap and undervalued",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Investors expect high future growth",
+          "isCorrect": true,
+          "explanation": "Investors are willing to pay a premium today for big profits tomorrow."
+        },
+        {
+          "id": "o3",
+          "text": "The company is bankrupt",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

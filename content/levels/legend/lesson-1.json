@@ -1,0 +1,69 @@
+{
+  "id": "lesson-1",
+  "title": "Call Options",
+  "description": "The right to buy.",
+  "xpReward": 1000,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Options Contracts",
+      "content": "An option is a contract. A 'Call Option' gives you the RIGHT, but not the obligation, to buy 100 shares of a stock at a specific 'Strike Price' by a certain 'Expiration Date'."
+    },
+    {
+      "id": "s2",
+      "title": "The Premium",
+      "content": "You pay a fee (the Premium) to buy this contract. If the stock explodes in value, you can exercise the contract to buy the shares at the cheap strike price!"
+    },
+    {
+      "id": "s3",
+      "title": "Extreme Leverage",
+      "content": "Options are incredibly powerful. A $500 option can become worth $5,000 in a day. BUT, if the stock doesn't reach the strike price before it expires, your option becomes worth exactly $0."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What does a Call Option give you?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The obligation to sell shares",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "The right (but not obligation) to buy shares at a specific price",
+          "isCorrect": true,
+          "explanation": "A call option is a bet that the price will go up."
+        },
+        {
+          "id": "o3",
+          "text": "A guaranteed dividend",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "If your call option expires and the stock price is LOWER than your strike price, what happens?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "You must buy the shares anyway",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "The option expires worthless and you lose the premium you paid",
+          "isCorrect": true,
+          "explanation": "Out-of-the-money options expire with zero value."
+        },
+        {
+          "id": "o3",
+          "text": "The broker refunds your money",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

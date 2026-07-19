@@ -1,0 +1,69 @@
+{
+  "id": "lesson-3",
+  "title": "What is an ETF?",
+  "description": "The ultimate tool for diversifying your portfolio.",
+  "xpReward": 200,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Don't put all your eggs in one basket",
+      "content": "Buying a single stock is risky. If that company fails, you lose your money. Diversification means spreading your money across many companies."
+    },
+    {
+      "id": "s2",
+      "title": "Exchange Traded Funds",
+      "content": "An ETF is a basket of hundreds of different stocks bundled together. You can buy 1 share of an ETF, and you instantly own tiny pieces of hundreds of companies."
+    },
+    {
+      "id": "s3",
+      "title": "The S&P 500",
+      "content": "The most popular ETFs track the S&P 500—an index of the 500 largest companies in America. Buying an S&P 500 ETF is betting on the overall economy."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is an ETF?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A single extremely safe tech company",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "A basket of many different stocks you can buy at once",
+          "isCorrect": true,
+          "explanation": "ETFs bundle multiple stocks into a single tradable asset."
+        },
+        {
+          "id": "o3",
+          "text": "A tax you pay to the government",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Why do investors love ETFs?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "They guarantee you will double your money in a week",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "They provide instant diversification and lower risk",
+          "isCorrect": true,
+          "explanation": "By holding many companies, the failure of one company doesn't ruin your portfolio."
+        },
+        {
+          "id": "o3",
+          "text": "They are completely free and pay massive dividends",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

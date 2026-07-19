@@ -1,0 +1,69 @@
+{
+  "id": "lesson-3",
+  "title": "Volume and Liquidity",
+  "description": "Why it matters how many people are trading.",
+  "xpReward": 400,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Trading Volume",
+      "content": "Volume is the total number of shares traded in a day. Apple might have 50 million shares traded, while a tiny penny stock might only have 5,000."
+    },
+    {
+      "id": "s2",
+      "title": "High Liquidity",
+      "content": "High volume means High Liquidity. It's easy to buy or sell instantly at fair prices because there's always someone willing to trade with you."
+    },
+    {
+      "id": "s3",
+      "title": "The Danger of Low Liquidity",
+      "content": "If you own a stock with low liquidity, you might be stuck. When you want to sell, there might be NO buyers, forcing you to slash your price dramatically just to escape."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What does 'Trading Volume' refer to?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "How loud the traders are shouting on the exchange floor",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "The total number of shares bought and sold in a given time period",
+          "isCorrect": true,
+          "explanation": "Volume indicates the activity level of a stock."
+        },
+        {
+          "id": "o3",
+          "text": "The physical size of the company's headquarters",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Why is High Liquidity good for a trader?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "It guarantees the stock price will go up",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "It means you can enter and exit trades easily and quickly without drastically affecting the price",
+          "isCorrect": true,
+          "explanation": "Liquidity ensures you can always find a buyer or seller."
+        },
+        {
+          "id": "o3",
+          "text": "It means the company pays high dividends",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

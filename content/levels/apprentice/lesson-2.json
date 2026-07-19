@@ -1,0 +1,47 @@
+{
+  "id": "lesson-2",
+  "title": "Market Orders vs Limit Orders",
+  "description": "Learn the different ways to tell your broker to buy a stock.",
+  "xpReward": 120,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "The Market Order",
+      "content": "A Market Order tells your broker: 'Buy this stock right NOW at whatever the current price is.' It guarantees execution, but not the price."
+    },
+    {
+      "id": "s2",
+      "title": "The Limit Order",
+      "content": "A Limit Order tells your broker: 'Buy this stock ONLY if the price drops to $100.' It guarantees the price, but might never execute if the price never drops."
+    },
+    {
+      "id": "s3",
+      "title": "Which to choose?",
+      "content": "Use Market orders when you are in a rush to own the stock. Use Limit orders to avoid overpaying during volatile times."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "If you want to buy a stock right this second and don't care if you pay 5 cents more, you should use a...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Limit Order",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Market Order",
+          "isCorrect": true,
+          "explanation": "Market orders execute immediately at the best available current price."
+        },
+        {
+          "id": "o3",
+          "text": "Stop Order",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

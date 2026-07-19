@@ -1,0 +1,47 @@
+{
+  "id": "lesson-1",
+  "title": "Market Capitalization",
+  "description": "How do we measure the true size of a company?",
+  "xpReward": 150,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Price vs Size",
+      "content": "A stock priced at $100 isn't necessarily a 'bigger' company than a stock priced at $50. It depends on how many total shares exist."
+    },
+    {
+      "id": "s2",
+      "title": "The Formula",
+      "content": "Market Cap = (Current Stock Price) × (Total Number of Outstanding Shares). This is the total price tag to buy the entire company."
+    },
+    {
+      "id": "s3",
+      "title": "Categories",
+      "content": "Mega-cap (Apple, Microsoft), Large-cap (over $10B), Mid-cap ($2B to $10B), and Small-cap (under $2B)."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "Company A has 1 million shares at $100. Company B has 10 million shares at $20. Which company is 'bigger' (higher market cap)?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Company A",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Company B",
+          "isCorrect": true,
+          "explanation": "B is worth 200 million (10m x $20). A is only worth 100 million (1m x $100)."
+        },
+        {
+          "id": "o3",
+          "text": "They are the same",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

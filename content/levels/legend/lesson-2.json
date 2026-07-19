@@ -1,0 +1,91 @@
+{
+  "id": "lesson-2",
+  "title": "Put Options",
+  "description": "The right to sell.",
+  "xpReward": 1000,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "The Put Option",
+      "content": "A 'Put Option' gives you the right to SELL 100 shares at a specific Strike Price. You buy a Put when you think the stock is going to CRASH."
+    },
+    {
+      "id": "s2",
+      "title": "Insurance",
+      "content": "Investors often buy Puts as insurance (hedging). If you own $100,000 of Apple stock, you can buy Put options. If Apple crashes, your stock loses value, but your Put options gain massive value, saving your portfolio!"
+    },
+    {
+      "id": "s3",
+      "title": "Zero Sum Game",
+      "content": "Options trading is a zero-sum game. For you to make $1,000 on an option trade, whoever sold you that contract lost $1,000."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "You would buy a Put Option if you believe...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The stock price is going to crash",
+          "isCorrect": true,
+          "explanation": "Puts gain value as the underlying stock price falls."
+        },
+        {
+          "id": "o2",
+          "text": "The stock price is going to skyrocket",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "The stock will pay a high dividend",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Using options to protect your portfolio from a crash is known as...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Short squeezing",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Hedging",
+          "isCorrect": true,
+          "explanation": "Hedging is like buying insurance for your investments."
+        },
+        {
+          "id": "o3",
+          "text": "Averaging down",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "If an option is a 'Zero Sum Game', that means...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Every dollar won by a buyer is a dollar lost by a seller",
+          "isCorrect": true,
+          "explanation": "Options simply transfer money between participants."
+        },
+        {
+          "id": "o2",
+          "text": "Nobody makes money",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "The broker takes all the profits",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

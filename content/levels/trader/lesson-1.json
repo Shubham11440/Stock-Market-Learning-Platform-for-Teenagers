@@ -1,0 +1,69 @@
+{
+  "id": "lesson-1",
+  "title": "Short Selling",
+  "description": "How to make money when a stock goes down.",
+  "xpReward": 400,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Betting against a company",
+      "content": "Normally you buy low and sell high. What if you think a company is garbage and the stock will crash? You can 'Short Sell' it."
+    },
+    {
+      "id": "s2",
+      "title": "How it works",
+      "content": "1. You BORROW shares from your broker. 2. You immediately SELL them at the high price. 3. Later, you BUY them back at the low price and RETURN them to the broker."
+    },
+    {
+      "id": "s3",
+      "title": "Infinite Risk",
+      "content": "When you buy a stock normally, the worst that happens is it goes to $0. When you short a stock, there is NO limit to how high the price can go. You could lose infinitely more money than you invested!"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is the correct order of operations for short selling?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Buy low, then sell high",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Borrow & sell high, then buy back low & return",
+          "isCorrect": true,
+          "explanation": "You sell first, and buy back later to cover your position."
+        },
+        {
+          "id": "o3",
+          "text": "Buy high, borrow low, return",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Why is short selling considered extremely risky?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Because brokers charge a $1,000 fee to do it",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Because a stock's price can technically rise infinitely, meaning infinite potential losses",
+          "isCorrect": true,
+          "explanation": "If you short a stock and it skyrockets (like GameStop), your losses have no cap."
+        },
+        {
+          "id": "o3",
+          "text": "Because the government monitors short sellers",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

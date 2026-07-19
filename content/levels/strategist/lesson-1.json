@@ -1,0 +1,69 @@
+{
+  "id": "lesson-1",
+  "title": "Reading Candlestick Charts",
+  "description": "How to interpret the most famous stock charts.",
+  "xpReward": 250,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "More than just a line",
+      "content": "A basic line chart only shows the closing price. A 'Candlestick' shows the Open, High, Low, and Close (OHLC) for a specific time period (like one day)."
+    },
+    {
+      "id": "s2",
+      "title": "The Body and Wicks",
+      "content": "The thick 'body' shows the difference between the open and close price. The thin lines (wicks) on top and bottom show the highest and lowest price reached that day."
+    },
+    {
+      "id": "s3",
+      "title": "Green vs Red",
+      "content": "If the close is higher than the open, the candle is Green (Bullish). If the close is lower than the open, it's Red (Bearish)."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What do the thin lines (wicks/shadows) on a candlestick represent?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The opening and closing price",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "The highest and lowest prices reached during that period",
+          "isCorrect": true,
+          "explanation": "Wicks show the extremes of price movement before settling."
+        },
+        {
+          "id": "o3",
+          "text": "The volume of shares traded",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "A green candlestick means...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The closing price was higher than the opening price",
+          "isCorrect": true,
+          "explanation": "Green means the price went up during that session."
+        },
+        {
+          "id": "o2",
+          "text": "The closing price was lower than the opening price",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "The company paid a dividend",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

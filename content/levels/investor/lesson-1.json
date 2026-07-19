@@ -1,0 +1,69 @@
+{
+  "id": "lesson-1",
+  "title": "Value vs Growth Investing",
+  "description": "Two fundamentally different philosophies.",
+  "xpReward": 500,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Value Investing",
+      "content": "Value investors look for 'cheap' companies. These companies might be boring (like banks or oil), but their stock price is artificially low compared to the actual cash they make. Think Warren Buffett."
+    },
+    {
+      "id": "s2",
+      "title": "Growth Investing",
+      "content": "Growth investors look for companies expanding rapidly (like tech startups or AI). They are willing to pay very high prices today because they believe the company will be massive tomorrow."
+    },
+    {
+      "id": "s3",
+      "title": "The Tradeoff",
+      "content": "Value stocks often pay dividends and are safer in crashes. Growth stocks can crash hard, but also have the potential to return 1000% if they succeed."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "A company with negative profits but revenue growing 50% year-over-year is most likely attractive to a...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Value Investor",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Growth Investor",
+          "isCorrect": true,
+          "explanation": "Growth investors prioritize massive future potential over current profits."
+        },
+        {
+          "id": "o3",
+          "text": "Dividend Investor",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Which of these is a hallmark of a classic Value Stock?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A very low P/E ratio and steady cash flow",
+          "isCorrect": true,
+          "explanation": "Value investors hunt for stocks trading for less than their intrinsic worth."
+        },
+        {
+          "id": "o2",
+          "text": "A brand new revolutionary technology",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "A P/E ratio over 200",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

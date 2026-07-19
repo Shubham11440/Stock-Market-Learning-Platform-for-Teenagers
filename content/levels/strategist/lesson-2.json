@@ -1,0 +1,69 @@
+{
+  "id": "lesson-2",
+  "title": "Support and Resistance",
+  "description": "The invisible floors and ceilings of the market.",
+  "xpReward": 300,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Support (The Floor)",
+      "content": "Support is a price level where a stock struggles to fall below. It's where buyers historically step in and think 'Wow, this is too cheap!' and start buying."
+    },
+    {
+      "id": "s2",
+      "title": "Resistance (The Ceiling)",
+      "content": "Resistance is a price level a stock struggles to break above. It's where sellers historically say 'Wow, this is expensive!' and start selling."
+    },
+    {
+      "id": "s3",
+      "title": "Breakouts",
+      "content": "If a stock finally smashes through a Resistance ceiling, it's called a 'Breakout'. That old ceiling often becomes the new floor (Support)!"
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "A price level that a stock historically struggles to fall below is called...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Resistance",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Support",
+          "isCorrect": true,
+          "explanation": "Support acts as a floor holding the price up."
+        },
+        {
+          "id": "o3",
+          "text": "Breakout",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "When a stock pushes past a major Resistance level, it is known as a...",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Breakout",
+          "isCorrect": true,
+          "explanation": "Breaking through resistance is a bullish sign called a breakout."
+        },
+        {
+          "id": "o2",
+          "text": "Correction",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "Dividend",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

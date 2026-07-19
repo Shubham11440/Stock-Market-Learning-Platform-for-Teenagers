@@ -6,6 +6,9 @@ import { Suspense } from 'react'
 import { Loader2 } from 'lucide-react'
 import { LEVEL_XP_REQUIREMENTS, LEVEL_NAMES } from '@/types'
 
+import fs from 'fs/promises'
+import path from 'path'
+
 // Map our static levels (1-7) to a dynamic progress tree
 async function fetchQuestMapData(userId: string): Promise<LevelNode[]> {
   const user = await db.user.findUniqueOrThrow({
@@ -17,28 +20,36 @@ async function fetchQuestMapData(userId: string): Promise<LevelNode[]> {
     }
   })
 
-  // We are mocking the "total lessons per level" for Phase 4 since they aren't all built.
-  // In a real app, this would scan the file system or DB.
-  const lessonsPerLevel = [3, 4, 5, 5, 6, 6, 8] // Just mock numbers
+  const slugs = ['rookie', 'apprentice', 'analyst', 'strategist', 'trader', 'investor', 'legend']
+  
+  // Dynamically count the number of JSON lessons in each level directory
+  const lessonsPerLevel = await Promise.all(slugs.map(async (slug) => {
+    try {
+      const dirPath = path.join(process.cwd(), 'content', 'levels', slug)
+      const files = await fs.readdir(dirPath)
+      return files.filter(f => f.endsWith('.json')).length
+    } catch {
+      return 0 // Default to 0 if directory doesn't exist
+    }
+  }))
 
   const levels: LevelNode[] = LEVEL_NAMES.map((name, index) => {
     const isUnlocked = user.level >= index + 1
-    
-    // Simplistic progress mock: if unlocked, maybe they have completed some
+    const slug = slugs[index]
     const lessonsTotal = lessonsPerLevel[index]
-    // For level 1, we actually have 'lesson-1' built. Let's count DB progress for Rookie.
-    const lessonsCompleted = index === 0 
-      ? user.progress.filter(lp => lp.lessonId.startsWith('lesson-')).length 
-      : (user.level > index + 1 ? lessonsTotal : 0) // if past it, assume 100%
+    
+    // Check how many completed progress records the user has for this level
+    // In our DB, lessonIds are unique (e.g. rookie-lesson-1, but currently they are just lesson-1).
+    // Wait, the progress records only store lessonId (e.g. "lesson-1"). 
+    // To be precise across multiple tiers, lesson IDs should include the slug (e.g. "rookie-lesson-1").
+    // Let's assume progress records match the generated IDs we will create.
+    const lessonsCompleted = user.progress.filter(lp => lp.lessonId.startsWith(`${slug}-`) || (slug === 'rookie' && lp.lessonId.startsWith('lesson-'))).length
       
-    const isCompleted = lessonsCompleted >= lessonsTotal
-    const progress = Math.min((lessonsCompleted / lessonsTotal) * 100, 100)
-
-    // For level 1, we specifically map it to the slug 'rookie' which we created in the file system
-    const slugs = ['rookie', 'apprentice', 'analyst', 'strategist', 'trader', 'investor', 'legend']
+    const isCompleted = lessonsTotal > 0 && lessonsCompleted >= lessonsTotal
+    const progress = lessonsTotal > 0 ? Math.min((lessonsCompleted / lessonsTotal) * 100, 100) : 0
 
     return {
-      id: slugs[index],
+      id: slug,
       title: name,
       description: `Complete ${lessonsTotal} lessons to master this stage.`,
       isUnlocked,

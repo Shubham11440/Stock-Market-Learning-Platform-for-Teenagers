@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, BookOpen, Lock, CheckCircle } from 'lucide-react'
 
+import fs from 'fs/promises'
+import path from 'path'
+
 // Next.js 15+ requires params to be awaited
 export default async function LevelPage({ params }: { params: Promise<{ levelId: string }> }) {
   const session = await auth()
@@ -18,15 +21,49 @@ export default async function LevelPage({ params }: { params: Promise<{ levelId:
   })
   const completedLessonIds = new Set(progress.map(p => p.lessonId))
 
-  // For Phase 4, we only have Rookie Lesson 1 built.
-  // Sequential unlocking: Lesson N is unlocked if Lesson N-1 is completed.
-  const lessons = levelId === 'rookie' ? [
-    { id: 'lesson-1', title: 'What is a Stock?', isUnlocked: true, isCompleted: completedLessonIds.has('lesson-1') },
-    { id: 'lesson-2', title: 'The Stock Exchange', isUnlocked: completedLessonIds.has('lesson-1'), isCompleted: completedLessonIds.has('lesson-2') },
-    { id: 'lesson-3', title: 'Bulls and Bears', isUnlocked: completedLessonIds.has('lesson-2'), isCompleted: completedLessonIds.has('lesson-3') },
-  ] : [
-    { id: 'lesson-1', title: 'Coming Soon', isUnlocked: false, isCompleted: false },
-  ]
+  // Dynamically load lessons from filesystem
+  const dirPath = path.join(process.cwd(), 'content', 'levels', levelId)
+  let files: string[] = []
+  try {
+    files = await fs.readdir(dirPath)
+  } catch {
+    files = []
+  }
+
+  const jsonFiles = files.filter(f => f.endsWith('.json'))
+
+  if (jsonFiles.length === 0) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        <Link href="/dashboard/learn" className="inline-flex items-center gap-2 text-text-3 hover:text-text-1 mb-8 transition-colors">
+          <ArrowLeft size={16} /> Back to Map
+        </Link>
+        <h1 className="font-display font-bold text-3xl text-text-1 mb-2 capitalize">{levelId}</h1>
+        <p className="text-text-2 mb-10">Lessons for this tier are coming soon!</p>
+      </div>
+    )
+  }
+
+  // Parse each file to get title and order
+  const rawLessons = await Promise.all(jsonFiles.map(async (file) => {
+    const fileContents = await fs.readFile(path.join(dirPath, file), 'utf8')
+    const data = JSON.parse(fileContents)
+    return {
+      id: data.id,
+      title: data.title,
+    }
+  }))
+
+  // Sort them naturally (lesson-1, lesson-2, etc)
+  rawLessons.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true, sensitivity: 'base' }))
+
+  // Calculate unlocked status sequentially
+  const lessons = rawLessons.map((lesson, idx) => {
+    const isCompleted = completedLessonIds.has(lesson.id)
+    // First lesson is always unlocked. Others unlock if the previous is completed.
+    const isUnlocked = idx === 0 ? true : completedLessonIds.has(rawLessons[idx - 1].id)
+    return { ...lesson, isCompleted, isUnlocked }
+  })
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">

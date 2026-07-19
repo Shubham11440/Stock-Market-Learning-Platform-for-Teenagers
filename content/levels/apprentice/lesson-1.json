@@ -1,0 +1,69 @@
+{
+  "id": "lesson-1",
+  "title": "What is a Broker?",
+  "description": "Learn how you actually place trades in the real world.",
+  "xpReward": 100,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "The Middleman",
+      "content": "You can't just walk into the stock exchange and buy shares. You need a broker—a middleman who is licensed to trade on the exchange."
+    },
+    {
+      "id": "s2",
+      "title": "Types of Brokers",
+      "content": "There are traditional full-service brokers (who give advice) and discount brokers (apps like Robinhood, Zerodha) which let you trade cheaply yourself."
+    },
+    {
+      "id": "s3",
+      "title": "Brokerage Accounts",
+      "content": "To start trading, you open a brokerage account, deposit money, and place orders through their app or website."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is a broker?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A bank that loans money",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "A licensed middleman who places trades for you",
+          "isCorrect": true,
+          "explanation": "Brokers execute trades on your behalf."
+        },
+        {
+          "id": "o3",
+          "text": "The owner of the stock exchange",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Which of the following is a discount broker?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A mobile app that lets you trade for a low flat fee",
+          "isCorrect": true,
+          "explanation": "Discount brokers offer low fees and self-service trading."
+        },
+        {
+          "id": "o2",
+          "text": "A personal financial advisor",
+          "isCorrect": false
+        },
+        {
+          "id": "o3",
+          "text": "The stock exchange itself",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

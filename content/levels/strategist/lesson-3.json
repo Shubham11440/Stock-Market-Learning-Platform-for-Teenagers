@@ -1,0 +1,69 @@
+{
+  "id": "lesson-3",
+  "title": "Moving Averages",
+  "description": "Smoothing out the chaos.",
+  "xpReward": 300,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Market Noise",
+      "content": "Stock prices jump up and down crazily every day. To see the 'real' trend, traders use Moving Averages."
+    },
+    {
+      "id": "s2",
+      "title": "Simple Moving Average (SMA)",
+      "content": "A 50-day SMA takes the closing price of the last 50 days, adds them up, and divides by 50. It draws a smooth line on the chart."
+    },
+    {
+      "id": "s3",
+      "title": "The Golden Cross",
+      "content": "When a short-term SMA (like 50-day) crosses ABOVE a long-term SMA (like 200-day), it's called a Golden Cross—a highly bullish signal."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "Why do traders use Moving Averages?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "To calculate exactly how much money a company makes",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "To smooth out daily price fluctuations and identify the overall trend",
+          "isCorrect": true,
+          "explanation": "Moving averages filter out the noise of daily volatility."
+        },
+        {
+          "id": "o3",
+          "text": "To guarantee they buy at the lowest possible price",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "What is a 'Golden Cross'?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "When you sell a stock for exactly double what you paid",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "When a short-term moving average crosses above a long-term moving average",
+          "isCorrect": true,
+          "explanation": "The Golden Cross is a famous technical indicator of a bull market."
+        },
+        {
+          "id": "o3",
+          "text": "When a long-term moving average crosses above a short-term one",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

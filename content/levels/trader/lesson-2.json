@@ -1,0 +1,69 @@
+{
+  "id": "lesson-2",
+  "title": "Margin Trading",
+  "description": "Trading with borrowed money.",
+  "xpReward": 400,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Leverage",
+      "content": "If you have $1,000, your broker might let you buy $2,000 worth of stock by lending you the other $1,000. This is called 'Buying on Margin'."
+    },
+    {
+      "id": "s2",
+      "title": "Double Edged Sword",
+      "content": "If the stock goes up 10%, you made $200 on your $1,000 investment (a 20% gain!). But if it goes down 10%, you lost $200 (a 20% loss)."
+    },
+    {
+      "id": "s3",
+      "title": "The Margin Call",
+      "content": "If your stock drops too much, the broker gets nervous you can't pay them back. They will issue a 'Margin Call', forcing you to deposit cash immediately, or they will sell your stocks by force at a huge loss."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What does it mean to 'Buy on Margin'?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Buying a stock at the margin (edges) of the trading day",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Borrowing money from your broker to buy more stock than you could normally afford",
+          "isCorrect": true,
+          "explanation": "Margin is leverage provided by your broker."
+        },
+        {
+          "id": "o3",
+          "text": "Buying only the cheapest stocks available",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "What happens during a Margin Call?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "The broker calls you to congratulate you on your profits",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "You must immediately deposit more cash or the broker will forcefully sell your stocks",
+          "isCorrect": true,
+          "explanation": "The broker acts to protect their loaned money before your account goes negative."
+        },
+        {
+          "id": "o3",
+          "text": "You get a free stock from the broker",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

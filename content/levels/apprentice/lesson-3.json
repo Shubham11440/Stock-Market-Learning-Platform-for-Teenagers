@@ -1,0 +1,69 @@
+{
+  "id": "lesson-3",
+  "title": "Dividends Explained",
+  "description": "How to make money just by holding a stock.",
+  "xpReward": 150,
+  "slides": [
+    {
+      "id": "s1",
+      "title": "Sharing the Profits",
+      "content": "When a company makes a lot of profit, they can choose to give a portion of it directly to their shareholders. This cash payment is called a Dividend."
+    },
+    {
+      "id": "s2",
+      "title": "Passive Income",
+      "content": "Dividends are usually paid quarterly (4 times a year). If a company pays a $1 dividend per share, and you own 100 shares, you get $100 in cash!"
+    },
+    {
+      "id": "s3",
+      "title": "Dividend Yield",
+      "content": "The Dividend Yield is a percentage showing how much a company pays out each year relative to its stock price. A 4% yield is considered strong."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is a dividend?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "A fee you pay to the broker",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "A portion of company profits paid to shareholders",
+          "isCorrect": true,
+          "explanation": "Companies reward shareholders with cash dividends."
+        },
+        {
+          "id": "o3",
+          "text": "The difference between buy and sell price",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "How often are dividends typically paid in the US?",
+      "options": [
+        {
+          "id": "o1",
+          "text": "Daily",
+          "isCorrect": false
+        },
+        {
+          "id": "o2",
+          "text": "Quarterly (4 times a year)",
+          "isCorrect": true,
+          "explanation": "Most dividend-paying companies distribute cash quarterly."
+        },
+        {
+          "id": "o3",
+          "text": "Once every 10 years",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
