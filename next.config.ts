@@ -34,6 +34,17 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  
+  // Permanent redirects for layout restructures
+  async redirects() {
+    return [
+      {
+        source: '/learn/:path*',
+        destination: '/dashboard/learn/:path*',
+        permanent: true,
+      },
+    ]
+  },
 
   // Experimental features
   experimental: {
