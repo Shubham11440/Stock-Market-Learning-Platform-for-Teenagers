@@ -1,0 +1,48 @@
+{
+  "id": "lesson-2",
+  "title": "The Stock Exchange",
+  "description": "Understand where and how stocks are bought and sold.",
+  "xpReward": 75,
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "The Marketplace",
+      "content": "A stock exchange is like a giant marketplace, but instead of fruits and vegetables, people buy and sell shares of companies."
+    },
+    {
+      "id": "slide-2",
+      "title": "Major Exchanges",
+      "content": "Famous examples include the New York Stock Exchange (NYSE) and NASDAQ in the US, or the National Stock Exchange (NSE) and Bombay Stock Exchange (BSE) in India."
+    },
+    {
+      "id": "slide-3",
+      "title": "How it Works",
+      "content": "When you want to buy a stock, your broker sends an order to the exchange. The exchange matches your buy order with someone else's sell order."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "What is the main purpose of a stock exchange?",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "To set the prices of all products in the country",
+          "isCorrect": false
+        },
+        {
+          "id": "opt2",
+          "text": "To match buyers and sellers of company shares",
+          "isCorrect": true,
+          "explanation": "Correct! An exchange facilitates the trading of stocks between buyers and sellers."
+        },
+        {
+          "id": "opt3",
+          "text": "To loan money to new businesses",
+          "isCorrect": false,
+          "explanation": "That is what a bank does, not a stock exchange."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "lesson-3",
+  "title": "Bulls and Bears",
+  "description": "Learn the most common animal terms in the stock market.",
+  "xpReward": 100,
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "The Bull Market",
+      "content": "A 'Bull Market' is when stock prices are rising or are expected to rise. Bulls attack by thrusting their horns UP!"
+    },
+    {
+      "id": "slide-2",
+      "title": "The Bear Market",
+      "content": "A 'Bear Market' is when prices are falling and investors are pessimistic. Bears attack by swiping their paws DOWN!"
+    },
+    {
+      "id": "slide-3",
+      "title": "Market Sentiment",
+      "content": "These terms describe the overall attitude (or sentiment) of investors. You can also be 'bullish' or 'bearish' on a single stock."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "question": "If you believe the price of a stock is going to go UP, you are...",
+      "options": [
+        {
+          "id": "opt1",
+          "text": "Bullish",
+          "isCorrect": true,
+          "explanation": "Correct! Bulls attack upwards, symbolizing rising prices."
+        },
+        {
+          "id": "opt2",
+          "text": "Bearish",
+          "isCorrect": false,
+          "explanation": "Bears attack downwards. Try again!"
+        },
+        {
+          "id": "opt3",
+          "text": "Neutral",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
