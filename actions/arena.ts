@@ -5,12 +5,7 @@ import { db } from '@/lib/db';
 import { awardXP } from '@/lib/gamification/xp';
 import { XPRewardResult } from '@/types/gamification';
 
-// Mock questions for the Arena (in a real app, this would be fetched from DB)
-const TODAY_QUESTIONS = [
-  { id: 'q1', correctAnswerIndex: 1 },
-  { id: 'q2', correctAnswerIndex: 0 },
-  { id: 'q3', correctAnswerIndex: 2 },
-];
+import { getDailyArenaQuestions } from '@/lib/arena-questions';
 
 export async function submitArena(answers: Record<string, number>): Promise<{ success: boolean; error?: string; result?: XPRewardResult & { score: number } }> {
   const session = await auth();
@@ -38,7 +33,8 @@ export async function submitArena(answers: Record<string, number>): Promise<{ su
 
   // 2. Grade the answers
   let score = 0;
-  for (const q of TODAY_QUESTIONS) {
+  const todayQuestions = getDailyArenaQuestions();
+  for (const q of todayQuestions) {
     if (answers[q.id] === q.correctAnswerIndex) {
       score += 1;
     }

@@ -1,24 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { submitArena } from '@/actions/arena';
 import { Swords, CheckCircle2, AlertCircle } from 'lucide-react';
 import { AchievementToast } from '@/components/gamification/AchievementToast';
-
-const DAILY_QUESTIONS = [
-  { id: 'q1', text: 'Which of the following describes a "Bull Market"?', options: ['Prices are falling', 'Prices are rising', 'Prices are stagnant'] },
-  { id: 'q2', text: 'What does P/E ratio stand for?', options: ['Price to Earnings', 'Profit to Equity', 'Public to Enterprise'] },
-  { id: 'q3', text: 'What is a dividend?', options: ['A penalty for selling early', 'A tax paid to the government', 'A share of profits paid to shareholders'] },
-];
+import { getDailyArenaQuestions, ArenaQuestion } from '@/lib/arena-questions';
 
 export default function ArenaPage() {
+  const [dailyQuestions, setDailyQuestions] = useState<ArenaQuestion[]>([]);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    // Generate questions on the client to avoid hydration mismatches with Date()
+    setDailyQuestions(getDailyArenaQuestions());
+  }, []);
+
   const handleSubmit = async () => {
-    if (Object.keys(answers).length < DAILY_QUESTIONS.length) {
+    if (Object.keys(answers).length < dailyQuestions.length) {
       setError('Please answer all questions before submitting.');
       return;
     }
@@ -43,7 +44,7 @@ export default function ArenaPage() {
           <CheckCircle2 size={40} />
         </div>
         <h2 className="text-3xl font-display font-bold text-text-1 mb-2">Arena Completed!</h2>
-        <p className="text-text-2 mb-8">You scored {result.score}/{DAILY_QUESTIONS.length}.</p>
+        <p className="text-text-2 mb-8">You scored {result.score}/{dailyQuestions.length}.</p>
         
         <div className="bg-surface border border-border p-6 rounded-2xl mb-8">
           <p className="text-sm font-medium text-text-3 uppercase tracking-wider mb-2">XP Earned</p>
@@ -78,7 +79,10 @@ export default function ArenaPage() {
       )}
 
       <div className="space-y-8 mb-8">
-        {DAILY_QUESTIONS.map((q, idx) => (
+        {dailyQuestions.length === 0 ? (
+          <div className="text-center p-8 text-text-3">Loading today's challenge...</div>
+        ) : (
+          dailyQuestions.map((q, idx) => (
           <div key={q.id} className="bg-surface border border-border p-6 rounded-2xl">
             <h3 className="text-lg font-semibold text-text-1 mb-4">
               <span className="text-primary mr-2">{idx + 1}.</span>
@@ -100,7 +104,7 @@ export default function ArenaPage() {
               ))}
             </div>
           </div>
-        ))}
+        )))}
       </div>
 
       <button

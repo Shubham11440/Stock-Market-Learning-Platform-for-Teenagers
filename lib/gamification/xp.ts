@@ -48,7 +48,9 @@ export async function awardXP(userId: string, amount: number, reason: string): P
     const user = await tx.user.findUnique({
       where: { id: userId },
       include: {
-        badges: true,
+        badges: {
+          include: { badge: true }
+        },
         transactions: true,
         progress: true,
       }
@@ -91,8 +93,8 @@ export async function awardXP(userId: string, amount: number, reason: string): P
     };
 
     // 5. Evaluate Badges
-    const existingBadgeIds = new Set(user.badges.map(b => b.badgeId));
-    const unlockedBadges = await evaluateBadges(userState, existingBadgeIds, tx, userId);
+    const existingBadgeNames = new Set(user.badges.map(b => b.badge.name));
+    const unlockedBadges = await evaluateBadges(userState, existingBadgeNames, tx, userId);
 
     return {
       xpEarned: amount,

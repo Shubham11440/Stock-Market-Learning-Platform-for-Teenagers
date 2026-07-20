@@ -4,7 +4,7 @@ import { UserState, UnlockedBadge } from '@/types/gamification';
 // Note: Prisma transaction is passed in from xp.ts or other calling services
 export async function evaluateBadges(
   state: UserState,
-  existingBadgeIds: Set<string>,
+  existingBadgeNames: Set<string>,
   tx: any,
   userId: string
 ): Promise<UnlockedBadge[]> {
@@ -12,7 +12,7 @@ export async function evaluateBadges(
 
   for (const rule of badgeRules) {
     // Skip if already earned
-    if (existingBadgeIds.has(rule.id)) continue;
+    if (existingBadgeNames.has(rule.name)) continue;
 
     // Check condition
     if (rule.evaluate(state)) {
