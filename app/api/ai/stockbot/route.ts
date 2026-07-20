@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error('[STOCKBOT_API_ERROR]', error)
     return NextResponse.json(
-      { error: 'Failed to process chat message' },
+      { error: 'Failed to process chat message', details: error.message || String(error) },
       { status: 500 }
     )
   }
