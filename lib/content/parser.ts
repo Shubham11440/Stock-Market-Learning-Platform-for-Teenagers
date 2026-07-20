@@ -10,7 +10,12 @@ import { Lesson, LessonSchema } from './schema'
  * @throws Error if the JSON is malformed or validation fails
  */
 export async function getLessonContent(levelId: string, lessonId: string): Promise<Lesson | null> {
-  const filePath = path.join(process.cwd(), 'content', 'levels', levelId, `${lessonId}.json`)
+  // The DB lessonId is globally unique (e.g. "rookie-lesson-1") but the physical file is "lesson-1.json"
+  const fileName = lessonId.startsWith(`${levelId}-`) 
+    ? lessonId.replace(`${levelId}-`, '') 
+    : lessonId;
+    
+  const filePath = path.join(process.cwd(), 'content', 'levels', levelId, `${fileName}.json`)
   
   try {
     const fileContents = await fs.readFile(filePath, 'utf8')
