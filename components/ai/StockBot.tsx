@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageSquare, X, Send, Bot, User, Sparkles, Loader2 } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import { cn } from '@/lib/utils'
 
 const SUGGESTED_QUESTIONS = [
@@ -173,12 +174,26 @@ export function StockBot() {
                       {msg.role === 'user' ? <User size={14} /> : <Bot size={14} />}
                     </div>
                     <div className={cn(
-                      "px-4 py-2.5 rounded-2xl text-sm whitespace-pre-wrap leading-relaxed shadow-sm",
+                      "px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm",
                       msg.role === 'user' 
-                        ? "bg-surface-3 text-text-1 rounded-tr-sm" 
+                        ? "bg-surface-3 text-text-1 rounded-tr-sm whitespace-pre-wrap" 
                         : "bg-surface border border-border text-text-2 rounded-tl-sm"
                     )}>
-                      {msg.content}
+                      {msg.role === 'user' ? (
+                        msg.content
+                      ) : (
+                        <ReactMarkdown 
+                          components={{
+                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-bold text-text-1" {...props} />,
+                            ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                            li: ({node, ...props}) => <li className="pl-1" {...props} />,
+                            a: ({node, ...props}) => <a className="text-primary hover:underline" {...props} />
+                          }}
+                        >
+                          {msg.content}
+                        </ReactMarkdown>
+                      )}
                     </div>
                   </div>
                 ))
