@@ -44,9 +44,9 @@ export async function submitArena(answers: Record<string, number>): Promise<{ su
   const xpReward = score * 50; // 50 XP per correct answer
 
   try {
-    // 4. Save Attempt and Award XP (in transaction via awardXP engine)
+    // 4. Save Attempt and Award XP (Manual rollback pattern)
     // First, save the attempt
-    await db.dailyQuizSubmission.create({
+    const submission = await db.dailyQuizSubmission.create({
       data: {
         userId,
         date: today,
@@ -58,7 +58,15 @@ export async function submitArena(answers: Record<string, number>): Promise<{ su
     // Award XP using our central engine
     let rewardResult: XPRewardResult = { xpEarned: 0, newTotalXP: 0, levelUp: false, newLevel: 1, unlockedBadges: [] };
     if (xpReward > 0) {
-      rewardResult = await awardXP(userId, xpReward, 'ARENA');
+      try {
+        rewardResult = await awardXP(userId, xpReward, 'ARENA');
+      } catch (xpError) {
+        // Rollback the submission if awarding XP failed (e.g. badge unique constraint)
+        await db.dailyQuizSubmission.delete({
+          where: { id: submission.id }
+        });
+        throw xpError;
+      }
     }
 
     return { 
