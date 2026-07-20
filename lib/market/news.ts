@@ -33,9 +33,21 @@ export async function getMarketNews(query: string = 'NIFTY 50'): Promise<NewsArt
 
       let timeString = 'Recently'
       if (item.providerPublishTime) {
-        const publishDate = new Date(item.providerPublishTime * 1000)
+        const publishDate = item.providerPublishTime instanceof Date 
+          ? item.providerPublishTime 
+          : new Date(item.providerPublishTime * (typeof item.providerPublishTime === 'number' && item.providerPublishTime < 10000000000 ? 1000 : 1))
+          
         const hoursAgo = Math.floor((Date.now() - publishDate.getTime()) / (1000 * 60 * 60))
-        timeString = hoursAgo === 0 ? 'Just now' : hoursAgo < 24 ? `${hoursAgo} hours ago` : `${Math.floor(hoursAgo / 24)} days ago`
+        
+        if (hoursAgo < 0) {
+          timeString = 'Just now'
+        } else if (hoursAgo === 0) {
+          timeString = 'Just now'
+        } else if (hoursAgo < 24) {
+          timeString = `${hoursAgo} hours ago`
+        } else {
+          timeString = `${Math.floor(hoursAgo / 24)} days ago`
+        }
       }
 
       return {
