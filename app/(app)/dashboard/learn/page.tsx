@@ -39,11 +39,8 @@ async function fetchQuestMapData(userId: string): Promise<LevelNode[]> {
     const lessonsTotal = lessonsPerLevel[index]
     
     // Check how many completed progress records the user has for this level
-    // In our DB, lessonIds are unique (e.g. rookie-lesson-1, but currently they are just lesson-1).
-    // Wait, the progress records only store lessonId (e.g. "lesson-1"). 
-    // To be precise across multiple tiers, lesson IDs should include the slug (e.g. "rookie-lesson-1").
-    // Let's assume progress records match the generated IDs we will create.
-    const lessonsCompleted = user.progress.filter(lp => lp.lessonId.startsWith(`${slug}-`) || (slug === 'rookie' && lp.lessonId.startsWith('lesson-'))).length
+    // In our DB, lessonIds are globally unique prefixed by slug (e.g. rookie-lesson-1).
+    const lessonsCompleted = user.progress.filter(lp => lp.lessonId.startsWith(`${slug}-`)).length
       
     const isCompleted = lessonsTotal > 0 && lessonsCompleted >= lessonsTotal
     const progress = lessonsTotal > 0 ? Math.min((lessonsCompleted / lessonsTotal) * 100, 100) : 0
