@@ -16,10 +16,8 @@ export function Greeting({ firstName }: GreetingProps) {
       setGreeting('Good morning')
     } else if (hour >= 12 && hour < 17) {
       setGreeting('Good afternoon')
-    } else if (hour >= 17 && hour < 21) {
-      setGreeting('Good evening')
     } else {
-      setGreeting('Good night')
+      setGreeting('Good evening')
     }
   }, [])
 
